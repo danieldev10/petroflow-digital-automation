@@ -12,8 +12,8 @@ const PORT = Number(process.env.PORT || 3001);
 
 // ---------- MSSQL CONNECTION ----------
 const dbConfig: sql.config = {
-  user: process.env.DB_USER || "sa",
-  password: process.env.DB_PASSWORD || "Ms1000$xy",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   server: process.env.DB_HOST || "localhost",
   port: Number(process.env.DB_PORT || 1433),
   database: process.env.DB_NAME || "PetroflowDB",
@@ -77,8 +77,8 @@ const hasRole = (role: string | undefined, allowed: string[]) => {
 
 // ---------- EMAIL ----------
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "smtp.office365.com",
-  port: Number(process.env.SMTP_PORT || 587),
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT),
   secure: false,
   auth: {
     user: process.env.SMTP_USER || "noreply-npl@norrenpensions.com",
