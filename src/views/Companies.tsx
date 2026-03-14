@@ -33,15 +33,25 @@ export default function Companies({
     actionLoading,
     onRegisterCompany,
 }: CompaniesProps) {
+    const canRegisterCompanies = user.role
+        .split(',')
+        .map((role) => role.trim())
+        .includes('Contractor');
+
     return (
         <div className="bg-white border border-brand-line/10 rounded-sm overflow-hidden relative">
             {showRegModal && (
                 <div className="fixed inset-0 bg-brand-ink/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div className="bg-white w-full max-w-lg p-8 shadow-2xl border border-brand-line/10">
                         <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-xl font-serif italic text-brand-ink">
-                                Register New OGFZA Entity
-                            </h2>
+                            <div>
+                                <h2 className="text-xl font-serif italic text-brand-ink">
+                                    Register New OGFZA Entity
+                                </h2>
+                                <p className="text-[10px] uppercase tracking-widest opacity-40 mt-1">
+                                    Contractor Onboarding Workflow
+                                </p>
+                            </div>
                             <button onClick={() => setShowRegModal(false)}>
                                 <X size={20} />
                             </button>
@@ -160,8 +170,7 @@ export default function Companies({
                     >
                         Export Registry Report
                     </button>
-
-                    {user.role === 'Admin' && (
+                    {canRegisterCompanies && (
                         <button
                             onClick={() => setShowRegModal(true)}
                             className="bg-brand-ink text-brand-bg px-4 py-2 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity"

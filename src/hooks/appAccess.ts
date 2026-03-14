@@ -1,9 +1,12 @@
 import { User } from '@/middleware/types.middleware';
 
-export const hasRole = (user: User | null, roleNeeded: string) => {
-    if (!user) return false;
+const getRoles = (user: User | null) => {
+    if (!user) return [];
+    return user.role.split(',').map((role) => role.trim());
+};
 
-    const roles = user.role.split(',').map((role) => role.trim());
+export const hasRole = (user: User | null, roleNeeded: string) => {
+    const roles = getRoles(user);
 
     if (roles.includes('Admin')) return true;
 
@@ -11,14 +14,19 @@ export const hasRole = (user: User | null, roleNeeded: string) => {
 };
 
 export const canAccessTab = (user: User | null, tab: string) => {
-    if (hasRole(user, 'Admin')) return true;
+    const roles = getRoles(user);
+    const isAdmin = roles.includes('Admin');
+    const isContractor = roles.includes('Contractor');
 
-    if (tab === 'dashboard') return true;
+    if (isAdmin) return true;
+
+    if (tab === 'dashboard') return !isContractor;
     if (tab === 'operations' && hasRole(user, 'Operations')) return true;
     if (tab === 'hr' && (hasRole(user, 'HR Manager') || hasRole(user, 'Operations'))) return true;
     if (tab === 'finance' && hasRole(user, 'Finance')) return true;
+    if (tab === 'companies' && (hasRole(user, 'Compliance') || isContractor)) return true;
 
-    if (tab === 'compliance' || tab === 'companies' || tab === 'incidents') {
+    if (tab === 'compliance' || tab === 'incidents') {
         if (hasRole(user, 'Compliance')) return true;
     }
 

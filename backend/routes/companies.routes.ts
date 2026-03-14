@@ -18,7 +18,7 @@ router.get("/", authenticateToken, async (_req, res) => {
 });
 
 router.post("/", authenticateToken, async (req: AuthenticatedRequest, res) => {
-    if (!hasRole(req.user?.role, ["Admin"])) return res.sendStatus(403);
+    if (!hasRole(req.user?.role, ["Contractor"])) return res.sendStatus(403);
 
     const { name, licenseNo, tin, sector, type, leaseInfo, representativeEmail } = req.body;
 

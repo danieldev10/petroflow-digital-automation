@@ -17,11 +17,11 @@ export const LoginPage = ({ onLogin, onSwitchToSignup, onSwitchToForgot }: { onL
 
     const demoUsers = [
         { email: 'admin@petroflow.com', pass: 'admin123', role: 'Admin' },
+        { email: 'achonma.tk@gmail.com', pass: 'Achonmatanko10', role: 'Contractor' },
         { email: 'compliance@ogfza.gov', pass: 'demo123', role: 'Compliance' },
         { email: 'ops@shell.com', pass: 'demo123', role: 'Operations' },
         { email: 'finance@ogfza.gov', pass: 'demo123', role: 'Finance' },
         { email: 'hr@ogfza.gov', pass: 'demo123', role: 'HR Manager' },
-        { email: 'contractor@buildit.com', pass: 'demo123', role: 'Contractor' },
     ];
 
     const handleSubmit = async (e: React.FormEvent) => {
