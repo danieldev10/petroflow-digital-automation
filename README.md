@@ -26,7 +26,7 @@ Create a .env file in the project root and add the following
 - DB_USER=sa
 - DB_PASSWORD=your_password_here
 - JWT_SECRET=your_jwt_secret_here
-- SMTP_HOST=smtp.office365.com
+- SMTP_HOST=smtp.gmail.com
 - SMTP_PORT=587
 - SMTP_USER=your_smtp_email_here
 - SMTP_PASS=your_smtp_password_here
