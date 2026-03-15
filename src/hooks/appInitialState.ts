@@ -1,4 +1,5 @@
 import { mergeCompanyApplicationDocuments } from '@/src/constants/companyApplication';
+import { mergeTradeOperationDocuments } from '@/src/constants/tradeOperations';
 
 export const createInitialCompanyApplicationForm = () => ({
     companyName: '',
@@ -45,6 +46,14 @@ export const createInitialCompanyApplicationForm = () => ({
     documents: mergeCompanyApplicationDocuments(),
 });
 
+export const createInitialTradeOperationForm = () => ({
+    companyId: '',
+    serviceType: '',
+    requestSummary: '',
+    requestedCompletionDate: '',
+    documents: mergeTradeOperationDocuments(),
+});
+
 export const createInitialIncidentForm = () => ({
     company_name: '',
     incident_type: 'HSE',
@@ -81,18 +90,6 @@ export const createInitialCertificationForm = () => ({
     cert_name: '',
     issued_date: '',
     expiry_date: '',
-});
-
-export const createInitialUploadDocForm = () => ({
-    contractor_id: '',
-    doc_type: 'License',
-    file_name: '',
-});
-
-export const createInitialProjectForm = () => ({
-    title: '',
-    description: '',
-    location: '',
 });
 
 export const createInitialOpsForm = () => ({

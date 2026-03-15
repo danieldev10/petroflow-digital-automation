@@ -4,8 +4,8 @@ import { useCompanyForms } from './forms/useCompanyForms';
 import { useIncidentForms } from './forms/useIncidentForms';
 import { usePermitForms } from './forms/usePermitForms';
 import { useHrForms } from './forms/useHrForms';
-import { useContractorForms } from './forms/useContractorForms';
 import { useOperationsForms } from './forms/useOperationsForms';
+import { useTradeOperationForms } from './forms/useTradeOperationForms';
 
 type UseAppFormsParams = {
     token: string | null;
@@ -26,8 +26,8 @@ export function useAppForms({ token, fetchData }: UseAppFormsParams) {
     const incidentForms = useIncidentForms(sharedParams);
     const permitForms = usePermitForms(sharedParams);
     const hrForms = useHrForms(sharedParams);
-    const contractorForms = useContractorForms(sharedParams);
     const operationsForms = useOperationsForms(sharedParams);
+    const tradeOperationForms = useTradeOperationForms(sharedParams);
 
     const updateUserRoleHandler = handleUpdateUserRole(token, fetchData);
 
@@ -37,8 +37,8 @@ export function useAppForms({ token, fetchData }: UseAppFormsParams) {
         ...incidentForms,
         ...permitForms,
         ...hrForms,
-        ...contractorForms,
         ...operationsForms,
+        ...tradeOperationForms,
         updateUserRoleHandler,
     };
 }

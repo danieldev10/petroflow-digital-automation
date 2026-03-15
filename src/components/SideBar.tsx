@@ -10,8 +10,8 @@ import {
     TrendingUp,
     LogOut,
     AlertTriangle,
-    Briefcase,
     Package,
+    ArrowLeftRight,
     type LucideIcon,
 } from 'lucide-react';
 import { User } from '@/middleware/types.middleware';
@@ -26,10 +26,10 @@ export type AppTab =
     | 'compliance'
     | 'operations'
     | 'incidents'
+    | 'trade-operations'
     | 'logistics'
     | 'settings'
-    | 'hr'
-    | 'contractors';
+    | 'hr';
 
 type SidebarProps = {
     user: User;
@@ -62,11 +62,11 @@ export function Sidebar({
                     : 'Executive Dashboard',
         },
         { key: 'companies' as AppTab, icon: Building2, label: 'Company Management' },
+        { key: 'trade-operations' as AppTab, icon: ArrowLeftRight, label: 'Trade Operations' },
         { key: 'permits' as AppTab, icon: FileText, label: 'Permits & Approvals' },
         { key: 'operations' as AppTab, icon: Activity, label: 'Field Assets' },
         { key: 'compliance' as AppTab, icon: ShieldCheck, label: 'Compliance & Audit' },
         { key: 'incidents' as AppTab, icon: AlertTriangle, label: 'Safety & Incident Logs' },
-        { key: 'contractors' as AppTab, icon: Briefcase, label: 'Contractor Portal' },
         { key: 'logistics' as AppTab, icon: Package, label: 'Integrated Logistics' },
         { key: 'finance' as AppTab, icon: DollarSign, label: 'Revenue & Finance' },
         { key: 'settings' as AppTab, icon: Settings, label: 'Change Management' },

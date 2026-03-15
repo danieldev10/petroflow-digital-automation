@@ -1,8 +1,11 @@
 import type { Dispatch, SetStateAction, React } from 'react';
 import type { Permit, User } from '@/middleware/types.middleware';
 import toast from 'react-hot-toast';
-import { createInitialCompanyApplicationForm } from './appInitialState';
-import type { CompanyApplicationForm } from '@/src/types/appFormTypes';
+import {
+    createInitialCompanyApplicationForm,
+    createInitialTradeOperationForm,
+} from './appInitialState';
+import type { CompanyApplicationForm, TradeOperationForm } from '@/src/types/appFormTypes';
 
 type SetUser = Dispatch<SetStateAction<User | null>>;
 type SetToken = Dispatch<SetStateAction<string | null>>;
@@ -14,7 +17,7 @@ export const getInitialTabForRole = (role: string) => {
     if (role.includes('Finance')) return 'finance';
     if (role.includes('Compliance')) return 'companies';
     if (role.includes('HR Manager')) return 'dashboard';
-    if (role.includes('Contractor')) return 'contractors';
+    if (role.includes('Contractor')) return 'companies';
     return 'dashboard';
 };
 
@@ -132,6 +135,115 @@ export const handleRegisterCompany = (
         console.error(err);
         toast.error(
             `An error occurred while ${editingCompanyApplicationId !== null ? 'resubmitting' : 'submitting'} the company application.`
+        );
+    } finally {
+        setActionLoading(false);
+    }
+};
+
+export const handleSubmitTradeOperationRequest = (
+    newTradeOperation: TradeOperationForm,
+    setShowTradeOperationModal: (show: boolean) => void,
+    setNewTradeOperation: (request: TradeOperationForm) => void,
+    editingTradeOperationId: number | null,
+    setEditingTradeOperationId: (requestId: number | null) => void,
+    actionLoading: boolean,
+    setActionLoading: (loading: boolean) => void,
+    token: string | null,
+    fetchData: () => void
+) => async (e: React.FormEvent) => {
+    e.preventDefault();
+    setActionLoading(true);
+    try {
+        const isResubmission = editingTradeOperationId !== null;
+        const res = await fetch(
+            isResubmission
+                ? `/api/trade-operations/${editingTradeOperationId}/resubmit`
+                : '/api/trade-operations',
+            {
+                method: isResubmission ? 'PATCH' : 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(newTradeOperation),
+            }
+        );
+
+        if (res.ok) {
+            const data = await res.json().catch(() => null);
+            setShowTradeOperationModal(false);
+            setNewTradeOperation(createInitialTradeOperationForm());
+            setEditingTradeOperationId(null);
+            fetchData();
+            toast.success(
+                data?.message ||
+                    (data?.requestReference
+                        ? `${isResubmission ? 'Trade request resubmitted' : 'Trade request submitted'}: ${data.requestReference}`
+                        : `Trade operation request ${isResubmission ? 'resubmitted' : 'submitted'} successfully.`)
+            );
+        } else {
+            const data = await res.json().catch(() => null);
+            toast.error(
+                data?.error ||
+                    `Failed to ${isResubmission ? 'resubmit' : 'submit'} the trade operation request.`
+            );
+        }
+    } catch (err) {
+        console.error(err);
+        toast.error(
+            `An error occurred while ${editingTradeOperationId !== null ? 'resubmitting' : 'submitting'} the trade operation request.`
+        );
+    } finally {
+        setActionLoading(false);
+    }
+};
+
+export const handleReviewTradeOperationRequest = (
+    actionLoading: boolean,
+    setActionLoading: (loading: boolean) => void,
+    token: string | null,
+    fetchData: () => void
+) => async (
+    requestId: number,
+    decision: 'Approved' | 'Rejected' | 'Returned',
+    rejectionReason?: string,
+    queryNote?: string,
+) => {
+    if (actionLoading) return;
+
+    setActionLoading(true);
+    try {
+        const res = await fetch(`/api/trade-operations/${requestId}/decision`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({ decision, rejectionReason, queryNote }),
+        });
+
+        if (res.ok) {
+            const data = await res.json().catch(() => null);
+            fetchData();
+            toast.success(
+                data?.message ||
+                    (decision === 'Approved'
+                        ? 'Trade operation request approved successfully.'
+                        : decision === 'Returned'
+                            ? 'Trade operation request returned for revision successfully.'
+                            : 'Trade operation request rejected successfully.')
+            );
+        } else {
+            const data = await res.json().catch(() => null);
+            toast.error(
+                data?.error || `Failed to ${decision.toLowerCase()} the trade operation request.`
+            );
+        }
+    } catch (err) {
+        console.error(err);
+        toast.error(
+            `An error occurred while processing the ${decision.toLowerCase()} decision.`
         );
     } finally {
         setActionLoading(false);

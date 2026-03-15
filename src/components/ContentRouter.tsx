@@ -3,6 +3,7 @@ import {
     User,
     Company,
     CompanyApplication,
+    TradeOperationRequest,
     Permit,
     Operation,
     Revenue,
@@ -15,8 +16,6 @@ import {
     Shift,
     HRStats,
     Contractor,
-    ContractorDocument,
-    WorkOrder,
     MaintenanceRecord,
     TeamMember,
     Stats,
@@ -32,11 +31,13 @@ import Permits from '@/src/views/Permits';
 import Incidents from '@/src/views/Incidents';
 import Operations from '@/src/views/Operations';
 import HR from '@/src/views/HR';
-import Contractors from '@/src/views/Contractors';
+import TradeOperations from '@/src/views/TradeOperations';
 import type { CompanyApplicationForm } from '@/src/types/appFormTypes';
+import type { TradeOperationForm } from '@/src/types/appFormTypes';
 
 type HrTab = 'employees' | 'attendance' | 'certs' | 'shifts' | 'safety';
 type NewCompanyForm = CompanyApplicationForm;
+type NewTradeOperationForm = TradeOperationForm;
 
 type NewIncidentForm = {
     company_name: string;
@@ -76,18 +77,6 @@ type NewCertificationForm = {
     expiry_date: string;
 };
 
-type UploadDocForm = {
-    contractor_id: string;
-    doc_type: string;
-    file_name: string;
-};
-
-type NewProjectForm = {
-    title: string;
-    description: string;
-    location: string;
-};
-
 type NewOpsForm = {
     field_name: string;
     production_volume: string;
@@ -113,6 +102,7 @@ type ContentRouterProps = {
     stats: Stats | null;
     companies: Company[];
     companyApplications: CompanyApplication[];
+    tradeOperations: TradeOperationRequest[];
     permits: Permit[];
     operations: Operation[];
     revenue: Revenue[];
@@ -125,8 +115,6 @@ type ContentRouterProps = {
     shifts: Shift[];
     hrStats: HRStats | null;
     contractors: Contractor[];
-    contractorDocs: ContractorDocument[];
-    workOrders: WorkOrder[];
     maintenance: MaintenanceRecord[];
     teamMembers: TeamMember[];
     allUsers: User[];
@@ -155,6 +143,20 @@ type ContentRouterProps = {
     submitCompanyApplicationPaymentHandler: (
         applicationId: number,
         paymentReference: string
+    ) => void | Promise<void>;
+
+    showTradeOperationModal: boolean;
+    setShowTradeOperationModal: Dispatch<SetStateAction<boolean>>;
+    editingTradeOperationId: number | null;
+    setEditingTradeOperationId: Dispatch<SetStateAction<number | null>>;
+    newTradeOperation: NewTradeOperationForm;
+    setNewTradeOperation: Dispatch<SetStateAction<NewTradeOperationForm>>;
+    submitTradeOperationHandler: FormActionHandler;
+    reviewTradeOperationHandler: (
+        requestId: number,
+        decision: 'Approved' | 'Rejected' | 'Returned',
+        rejectionReason?: string,
+        queryNote?: string,
     ) => void | Promise<void>;
 
     showIncidentModal: boolean;
@@ -195,17 +197,6 @@ type ContentRouterProps = {
     setNewCert: Dispatch<SetStateAction<NewCertificationForm>>;
     logCertHandler: FormActionHandler;
 
-    showUploadDocModal: boolean;
-    setShowUploadDocModal: Dispatch<SetStateAction<boolean>>;
-    showProjectModal: boolean;
-    setShowProjectModal: Dispatch<SetStateAction<boolean>>;
-    uploadDoc: UploadDocForm;
-    setUploadDoc: Dispatch<SetStateAction<UploadDocForm>>;
-    newProject: NewProjectForm;
-    setNewProject: Dispatch<SetStateAction<NewProjectForm>>;
-    uploadDocumentHandler: FormActionHandler;
-    requestProjectHandler: FormActionHandler;
-
     showOpsModal: boolean;
     setShowOpsModal: Dispatch<SetStateAction<boolean>>;
     newOps: NewOpsForm;
@@ -227,6 +218,7 @@ export default function ContentRouter({
     stats,
     companies,
     companyApplications,
+    tradeOperations,
     permits,
     operations,
     revenue,
@@ -239,8 +231,6 @@ export default function ContentRouter({
     shifts,
     hrStats,
     contractors,
-    contractorDocs,
-    workOrders,
     maintenance,
     teamMembers,
     allUsers,
@@ -257,6 +247,15 @@ export default function ContentRouter({
     reviewCompanyApplicationHandler,
     confirmCompanyApplicationPaymentHandler,
     submitCompanyApplicationPaymentHandler,
+
+    showTradeOperationModal,
+    setShowTradeOperationModal,
+    editingTradeOperationId,
+    setEditingTradeOperationId,
+    newTradeOperation,
+    setNewTradeOperation,
+    submitTradeOperationHandler,
+    reviewTradeOperationHandler,
 
     showIncidentModal,
     setShowIncidentModal,
@@ -295,17 +294,6 @@ export default function ContentRouter({
     newCert,
     setNewCert,
     logCertHandler,
-
-    showUploadDocModal,
-    setShowUploadDocModal,
-    showProjectModal,
-    setShowProjectModal,
-    uploadDoc,
-    setUploadDoc,
-    newProject,
-    setNewProject,
-    uploadDocumentHandler,
-    requestProjectHandler,
 
     showOpsModal,
     setShowOpsModal,
@@ -359,6 +347,25 @@ export default function ContentRouter({
                     onReviewApplication={reviewCompanyApplicationHandler}
                     onConfirmApplicationPayment={confirmCompanyApplicationPaymentHandler}
                     onSubmitApplicationPayment={submitCompanyApplicationPaymentHandler}
+                />
+            );
+
+        case 'trade-operations':
+            return (
+                <TradeOperations
+                    token={token}
+                    user={user}
+                    companies={companies}
+                    tradeOperations={tradeOperations}
+                    showTradeOperationModal={showTradeOperationModal}
+                    setShowTradeOperationModal={setShowTradeOperationModal}
+                    editingTradeOperationId={editingTradeOperationId}
+                    setEditingTradeOperationId={setEditingTradeOperationId}
+                    newTradeOperation={newTradeOperation}
+                    setNewTradeOperation={setNewTradeOperation}
+                    actionLoading={actionLoading}
+                    onSubmitTradeOperation={submitTradeOperationHandler}
+                    onReviewTradeOperation={reviewTradeOperationHandler}
                 />
             );
 
@@ -470,27 +477,7 @@ export default function ContentRouter({
                 />
             );
 
-        case 'contractors':
-            return (
-                <Contractors
-                    contractors={contractors}
-                    contractorDocs={contractorDocs}
-                    workOrders={workOrders}
-                    showUploadDocModal={showUploadDocModal}
-                    setShowUploadDocModal={setShowUploadDocModal}
-                    showProjectModal={showProjectModal}
-                    setShowProjectModal={setShowProjectModal}
-                    uploadDoc={uploadDoc}
-                    setUploadDoc={setUploadDoc}
-                    newProject={newProject}
-                    setNewProject={setNewProject}
-                    actionLoading={actionLoading}
-                    onUploadDocument={uploadDocumentHandler}
-                    onRequestProject={requestProjectHandler}
-                />
-            );
-
         default:
-            return <div className="p-20 text-center opacity-50 italic">Select a module to continue...</div>;
+            return <div className="p-20 text-center opacity-50 ">Select a module to continue...</div>;
     }
 }

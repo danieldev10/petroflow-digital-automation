@@ -35,6 +35,7 @@ export default function App() {
     stats,
     companies,
     companyApplications,
+    tradeOperations,
     permits,
     operations,
     revenue,
@@ -47,8 +48,6 @@ export default function App() {
     shifts,
     hrStats,
     contractors,
-    contractorDocs,
-    workOrders,
     maintenance,
     teamMembers,
     allUsers,
@@ -73,6 +72,15 @@ export default function App() {
     reviewCompanyApplicationHandler,
     confirmCompanyApplicationPaymentHandler,
     submitCompanyApplicationPaymentHandler,
+
+    showTradeOperationModal,
+    setShowTradeOperationModal,
+    editingTradeOperationId,
+    setEditingTradeOperationId,
+    newTradeOperation,
+    setNewTradeOperation,
+    submitTradeOperationHandler,
+    reviewTradeOperationHandler,
 
     showIncidentModal,
     setShowIncidentModal,
@@ -111,17 +119,6 @@ export default function App() {
 
     hrTab,
     setHrTab,
-
-    showUploadDocModal,
-    setShowUploadDocModal,
-    showProjectModal,
-    setShowProjectModal,
-    uploadDoc,
-    setUploadDoc,
-    newProject,
-    setNewProject,
-    uploadDocumentHandler,
-    requestProjectHandler,
 
     showOpsModal,
     setShowOpsModal,
@@ -175,7 +172,7 @@ export default function App() {
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-brand-bg gap-4">
         <div className="w-12 h-12 border-2 border-brand-ink border-t-transparent rounded-full animate-spin" />
-        <p className="font-serif italic text-sm animate-pulse">
+        <p className="font-serif text-sm animate-pulse">
           Initializing OGFZA Digital Automation Infrastructure...
         </p>
       </div>
@@ -221,6 +218,7 @@ export default function App() {
                 stats={stats}
                 companies={companies}
                 companyApplications={companyApplications}
+                tradeOperations={tradeOperations}
                 permits={permits}
                 operations={operations}
                 revenue={revenue}
@@ -233,8 +231,6 @@ export default function App() {
                 shifts={shifts}
                 hrStats={hrStats}
                 contractors={contractors}
-                contractorDocs={contractorDocs}
-                workOrders={workOrders}
                 maintenance={maintenance}
                 teamMembers={teamMembers}
                 allUsers={allUsers}
@@ -249,6 +245,14 @@ export default function App() {
                 reviewCompanyApplicationHandler={reviewCompanyApplicationHandler}
                 confirmCompanyApplicationPaymentHandler={confirmCompanyApplicationPaymentHandler}
                 submitCompanyApplicationPaymentHandler={submitCompanyApplicationPaymentHandler}
+                showTradeOperationModal={showTradeOperationModal}
+                setShowTradeOperationModal={setShowTradeOperationModal}
+                editingTradeOperationId={editingTradeOperationId}
+                setEditingTradeOperationId={setEditingTradeOperationId}
+                newTradeOperation={newTradeOperation}
+                setNewTradeOperation={setNewTradeOperation}
+                submitTradeOperationHandler={submitTradeOperationHandler}
+                reviewTradeOperationHandler={reviewTradeOperationHandler}
                 showIncidentModal={showIncidentModal}
                 setShowIncidentModal={setShowIncidentModal}
                 newIncident={newIncident}
@@ -281,16 +285,6 @@ export default function App() {
                 newCert={newCert}
                 setNewCert={setNewCert}
                 logCertHandler={logCertHandler}
-                showUploadDocModal={showUploadDocModal}
-                setShowUploadDocModal={setShowUploadDocModal}
-                showProjectModal={showProjectModal}
-                setShowProjectModal={setShowProjectModal}
-                uploadDoc={uploadDoc}
-                setUploadDoc={setUploadDoc}
-                newProject={newProject}
-                setNewProject={setNewProject}
-                uploadDocumentHandler={uploadDocumentHandler}
-                requestProjectHandler={requestProjectHandler}
                 showOpsModal={showOpsModal}
                 setShowOpsModal={setShowOpsModal}
                 newOps={newOps}

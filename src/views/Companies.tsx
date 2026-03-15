@@ -129,7 +129,7 @@ const LicenseFeeSummary = ({
 
     if (!feeSchedule) {
         return (
-            <div className="border border-dashed border-brand-line/20 p-4 text-sm italic opacity-50">
+            <div className="border border-dashed border-brand-line/20 p-4 text-sm  opacity-50">
                 Select a licence type to view the prescribed fee schedule.
             </div>
         );
@@ -173,7 +173,7 @@ const ApplicationEventLog = ({
 }) => {
     if (!events?.length) {
         return (
-            <div className="border border-dashed border-brand-line/20 p-4 text-sm italic opacity-50">
+            <div className="border border-dashed border-brand-line/20 p-4 text-sm  opacity-50">
                 No workflow activity has been logged for this application yet.
             </div>
         );
@@ -231,7 +231,7 @@ const ApplicationDocumentChecklist = ({
 
     if (requirements.length === 0) {
         return (
-            <div className="border border-dashed border-brand-line/20 p-4 text-sm italic opacity-50">
+            <div className="border border-dashed border-brand-line/20 p-4 text-sm  opacity-50">
                 Select an incorporation type to view the required supporting documents.
             </div>
         );
@@ -742,7 +742,7 @@ export default function Companies({
                     <div className="bg-white w-full max-w-6xl max-h-[90vh] overflow-y-auto p-8 shadow-2xl border border-brand-line/10">
                         <div className="flex justify-between items-center mb-6">
                             <div>
-                                <h2 className="text-xl font-serif italic text-brand-ink">
+                                <h2 className="text-xl font-serif  text-brand-ink">
                                     {editingCompanyApplicationId ? 'Resubmit Queried Application' : 'Free Zone Registration Application'}
                                 </h2>
                                 <p className="text-[10px] uppercase tracking-widest opacity-40 mt-1">
@@ -1290,7 +1290,7 @@ export default function Companies({
                                 </div>
 
                                 {!currentDocumentRequirements.length ? (
-                                    <div className="border border-dashed border-brand-line/20 p-4 text-sm italic opacity-50">
+                                    <div className="border border-dashed border-brand-line/20 p-4 text-sm  opacity-50">
                                         Select an incorporation type to load the corresponding required documents.
                                     </div>
                                 ) : (
@@ -1310,13 +1310,12 @@ export default function Companies({
                                                             <p className="mt-1 text-xs opacity-55">{requirement.description}</p>
                                                         </div>
                                                         <span
-                                                            className={`text-[10px] font-mono font-bold px-2 py-1 rounded-full ${
-                                                                isDerivedRequirement
+                                                            className={`text-[10px] font-mono font-bold px-2 py-1 rounded-full ${isDerivedRequirement
                                                                     ? 'bg-emerald-50 text-emerald-700'
                                                                     : requirement.required === false
                                                                         ? 'bg-brand-ink/5 text-brand-ink/70'
                                                                         : 'bg-amber-50 text-amber-700'
-                                                            }`}
+                                                                }`}
                                                         >
                                                             {isDerivedRequirement
                                                                 ? 'Included in Form'
@@ -1371,7 +1370,7 @@ export default function Companies({
                                 <p className="text-[10px] uppercase tracking-[0.3em] opacity-35">
                                     Registered Company Profile
                                 </p>
-                                <h2 className="text-2xl font-serif italic text-brand-ink mt-2">
+                                <h2 className="text-2xl font-serif  text-brand-ink mt-2">
                                     {selectedCompanyDetail?.name || selectedCompanyName || 'Company Details'}
                                 </h2>
                                 <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -1396,7 +1395,7 @@ export default function Companies({
                         {companyDetailLoading && (
                             <div className="py-16 text-center">
                                 <div className="w-10 h-10 border-2 border-brand-ink border-t-transparent rounded-full animate-spin mx-auto" />
-                                <p className="mt-4 text-sm italic opacity-50">
+                                <p className="mt-4 text-sm  opacity-50">
                                     Loading company details from the registry...
                                 </p>
                             </div>
@@ -1657,184 +1656,184 @@ export default function Companies({
                 <div className="fixed inset-0 bg-brand-ink/20 backdrop-blur-sm z-50 overflow-y-auto p-4">
                     <div className="min-h-full flex items-start justify-center py-4">
                         <div className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 shadow-2xl border border-brand-line/10">
-                        <div className="flex justify-between items-start gap-4">
-                            <div>
-                                <p className="text-[10px] uppercase tracking-[0.3em] opacity-35">
-                                    Application Status
-                                </p>
-                                <h2 className="text-2xl font-serif italic text-brand-ink mt-2">
-                                    {selectedApplication.company_name}
-                                </h2>
-                                <p className="text-xs font-mono opacity-50 mt-2">
-                                    {selectedApplication.application_reference}
-                                </p>
+                            <div className="flex justify-between items-start gap-4">
+                                <div>
+                                    <p className="text-[10px] uppercase tracking-[0.3em] opacity-35">
+                                        Application Status
+                                    </p>
+                                    <h2 className="text-2xl font-serif  text-brand-ink mt-2">
+                                        {selectedApplication.company_name}
+                                    </h2>
+                                    <p className="text-xs font-mono opacity-50 mt-2">
+                                        {selectedApplication.application_reference}
+                                    </p>
+                                </div>
+                                <button type="button" onClick={closeApplicationStatusModal}>
+                                    <X size={20} />
+                                </button>
                             </div>
-                            <button type="button" onClick={closeApplicationStatusModal}>
-                                <X size={20} />
-                            </button>
-                        </div>
 
-                        {applicationStatusLoading && (
-                            <div className="py-10 text-center">
-                                <div className="w-10 h-10 border-2 border-brand-ink border-t-transparent rounded-full animate-spin mx-auto" />
-                                <p className="mt-4 text-sm italic opacity-50">
-                                    Loading application history...
-                                </p>
-                            </div>
-                        )}
+                            {applicationStatusLoading && (
+                                <div className="py-10 text-center">
+                                    <div className="w-10 h-10 border-2 border-brand-ink border-t-transparent rounded-full animate-spin mx-auto" />
+                                    <p className="mt-4 text-sm  opacity-50">
+                                        Loading application history...
+                                    </p>
+                                </div>
+                            )}
 
-                        {!applicationStatusLoading && applicationStatusError && (
-                            <div className="mt-8 border border-rose-200 bg-rose-50 text-rose-700 p-4 text-sm">
-                                {applicationStatusError}
-                            </div>
-                        )}
+                            {!applicationStatusLoading && applicationStatusError && (
+                                <div className="mt-8 border border-rose-200 bg-rose-50 text-rose-700 p-4 text-sm">
+                                    {applicationStatusError}
+                                </div>
+                            )}
 
-                        {(() => {
-                            const applicationForStatus = selectedApplicationStatusDetail || selectedApplication;
-                            const statusLabel = getApplicationStatusLabel(applicationForStatus);
-                            const tone = getApplicationStatusTone(statusLabel);
-                            const toneClasses = getApplicationStatusClasses(tone);
-                            const issued = statusLabel === 'Licence Issued';
-                            const rejected = statusLabel === 'Rejected';
-                            const queried = statusLabel === 'Queried';
-                            const awaitingMd = statusLabel === 'Awaiting MD Approval';
-                            const awaitingContractorPayment = statusLabel === 'Awaiting Contractor Payment';
-                            const awaitingPaymentConfirmation = statusLabel === 'Awaiting Payment Confirmation';
+                            {(() => {
+                                const applicationForStatus = selectedApplicationStatusDetail || selectedApplication;
+                                const statusLabel = getApplicationStatusLabel(applicationForStatus);
+                                const tone = getApplicationStatusTone(statusLabel);
+                                const toneClasses = getApplicationStatusClasses(tone);
+                                const issued = statusLabel === 'Licence Issued';
+                                const rejected = statusLabel === 'Rejected';
+                                const queried = statusLabel === 'Queried';
+                                const awaitingMd = statusLabel === 'Awaiting MD Approval';
+                                const awaitingContractorPayment = statusLabel === 'Awaiting Contractor Payment';
+                                const awaitingPaymentConfirmation = statusLabel === 'Awaiting Payment Confirmation';
 
-                            return (
-                                <div className="mt-8 space-y-6">
-                                    <div className={`border p-5 ${tone === 'rose' ? 'border-rose-200 bg-rose-50/50' : tone === 'emerald' ? 'border-emerald-200 bg-emerald-50/50' : 'border-amber-200 bg-amber-50/50'}`}>
-                                        <div className="flex items-center justify-between gap-4 flex-wrap">
-                                            <p className="text-[10px] uppercase tracking-widest opacity-50">
-                                                Current Status
-                                            </p>
-                                            <span className={`text-[10px] font-mono font-bold px-2 py-1 rounded-full ${toneClasses}`}>
-                                                {statusLabel}
-                                            </span>
-                                        </div>
+                                return (
+                                    <div className="mt-8 space-y-6">
+                                        <div className={`border p-5 ${tone === 'rose' ? 'border-rose-200 bg-rose-50/50' : tone === 'emerald' ? 'border-emerald-200 bg-emerald-50/50' : 'border-amber-200 bg-amber-50/50'}`}>
+                                            <div className="flex items-center justify-between gap-4 flex-wrap">
+                                                <p className="text-[10px] uppercase tracking-widest opacity-50">
+                                                    Current Status
+                                                </p>
+                                                <span className={`text-[10px] font-mono font-bold px-2 py-1 rounded-full ${toneClasses}`}>
+                                                    {statusLabel}
+                                                </span>
+                                            </div>
 
-                                        <p className="mt-4 text-sm text-brand-ink">
-                                            {issued && 'This application has completed payment confirmation and the licence has been issued.'}
-                                            {awaitingContractorPayment && 'This application has received MD approval and is now waiting for the contractor to submit payment details.'}
-                                            {awaitingPaymentConfirmation && 'The contractor has submitted payment details and OGFZA is now waiting for admin confirmation before the licence number is issued.'}
-                                            {awaitingMd && 'Compliance has completed review and forwarded this application to the Managing Director for final approval.'}
-                                            {queried && 'Compliance has queried this application and requested revisions from the contractor before review can continue.'}
-                                            {!issued && !awaitingContractorPayment && !awaitingPaymentConfirmation && !awaitingMd && !rejected && !queried && 'This application is still waiting for compliance review and has not yet been forwarded to the Managing Director.'}
-                                            {rejected && 'This application was rejected during the review process.'}
-                                        </p>
-                                    </div>
-
-                                    <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <DetailItem label="Submitted On" value={formatDisplayDateTime(applicationForStatus.submitted_at)} />
-                                        <DetailItem label="Last Action" value={formatDisplayDateTime(getLastActionDate(applicationForStatus))} />
-                                        <DetailItem label="Requested Licence Type" value={applicationForStatus.requested_license_type} />
-                                        <DetailItem label="Approved Licence Type" value={applicationForStatus.approved_license_type} />
-                                        <DetailItem label="Estimated Fees (USD)" value={formatUsd(applicationForStatus.estimated_fee_usd)} />
-                                        <DetailItem label="Final Fees (USD)" value={formatUsd(applicationForStatus.approved_fee_usd)} />
-                                        <DetailItem label="Payment Status" value={applicationForStatus.payment_status} />
-                                        <DetailItem label="Payment Reference" value={applicationForStatus.payment_reference} />
-                                        <DetailItem label="Payment Submitted On" value={formatDisplayDateTime(applicationForStatus.payment_submitted_at)} />
-                                        <DetailItem label="Payment Confirmed On" value={formatDisplayDateTime(applicationForStatus.payment_confirmed_at)} />
-                                        <DetailItem label="Licence Number" value={applicationForStatus.linked_company_license_no} mono />
-                                    </dl>
-
-                                    <section className="space-y-4">
-                                        <div>
-                                            <h3 className="text-sm font-bold uppercase tracking-widest opacity-50">
-                                                Licence Fee Summary
-                                            </h3>
-                                        </div>
-                                        <LicenseFeeSummary
-                                            licenseType={applicationForStatus.approved_license_type || applicationForStatus.requested_license_type}
-                                            totalOverride={applicationForStatus.approved_fee_usd || applicationForStatus.estimated_fee_usd}
-                                        />
-                                    </section>
-
-                                    {rejected && (
-                                        <div className="border border-rose-200 bg-rose-50 p-5">
-                                            <p className="text-[10px] uppercase tracking-widest text-rose-700/70">
-                                                Rejection Reason
-                                            </p>
-                                            <p className="mt-3 text-sm text-rose-800 whitespace-pre-wrap">
-                                                {applicationForStatus.rejection_reason?.trim() || 'No rejection reason was provided.'}
+                                            <p className="mt-4 text-sm text-brand-ink">
+                                                {issued && 'This application has completed payment confirmation and the licence has been issued.'}
+                                                {awaitingContractorPayment && 'This application has received MD approval and is now waiting for the contractor to submit payment details.'}
+                                                {awaitingPaymentConfirmation && 'The contractor has submitted payment details and OGFZA is now waiting for admin confirmation before the licence number is issued.'}
+                                                {awaitingMd && 'Compliance has completed review and forwarded this application to the Managing Director for final approval.'}
+                                                {queried && 'Compliance has queried this application and requested revisions from the contractor before review can continue.'}
+                                                {!issued && !awaitingContractorPayment && !awaitingPaymentConfirmation && !awaitingMd && !rejected && !queried && 'This application is still waiting for compliance review and has not yet been forwarded to the Managing Director.'}
+                                                {rejected && 'This application was rejected during the review process.'}
                                             </p>
                                         </div>
-                                    )}
 
-                                    {queried && (
-                                        <div className="border border-amber-200 bg-amber-50 p-5">
-                                            <p className="text-[10px] uppercase tracking-widest text-amber-800/70">
-                                                Compliance Query
-                                            </p>
-                                            <p className="mt-3 text-sm text-amber-900 whitespace-pre-wrap">
-                                                {applicationForStatus.query_note?.trim() || 'Compliance requested revisions for this application.'}
-                                            </p>
-                                        </div>
-                                    )}
+                                        <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <DetailItem label="Submitted On" value={formatDisplayDateTime(applicationForStatus.submitted_at)} />
+                                            <DetailItem label="Last Action" value={formatDisplayDateTime(getLastActionDate(applicationForStatus))} />
+                                            <DetailItem label="Requested Licence Type" value={applicationForStatus.requested_license_type} />
+                                            <DetailItem label="Approved Licence Type" value={applicationForStatus.approved_license_type} />
+                                            <DetailItem label="Estimated Fees (USD)" value={formatUsd(applicationForStatus.estimated_fee_usd)} />
+                                            <DetailItem label="Final Fees (USD)" value={formatUsd(applicationForStatus.approved_fee_usd)} />
+                                            <DetailItem label="Payment Status" value={applicationForStatus.payment_status} />
+                                            <DetailItem label="Payment Reference" value={applicationForStatus.payment_reference} />
+                                            <DetailItem label="Payment Submitted On" value={formatDisplayDateTime(applicationForStatus.payment_submitted_at)} />
+                                            <DetailItem label="Payment Confirmed On" value={formatDisplayDateTime(applicationForStatus.payment_confirmed_at)} />
+                                            <DetailItem label="Licence Number" value={applicationForStatus.linked_company_license_no} mono />
+                                        </dl>
 
-                                    {!applicationStatusLoading && (
                                         <section className="space-y-4">
                                             <div>
                                                 <h3 className="text-sm font-bold uppercase tracking-widest opacity-50">
-                                                    Workflow Log
+                                                    Licence Fee Summary
                                                 </h3>
                                             </div>
-                                            <ApplicationEventLog
-                                                events={selectedApplicationStatusDetail?.events}
-                                                formatDisplayDateTime={formatDisplayDateTime}
+                                            <LicenseFeeSummary
+                                                licenseType={applicationForStatus.approved_license_type || applicationForStatus.requested_license_type}
+                                                totalOverride={applicationForStatus.approved_fee_usd || applicationForStatus.estimated_fee_usd}
                                             />
                                         </section>
-                                    )}
 
-                                    {awaitingContractorPayment && canResubmitApplications && (
-                                        <div className="border border-brand-line/10 bg-brand-ink/[0.02] p-5 space-y-4">
-                                            <div>
-                                                <h3 className="text-sm font-bold uppercase tracking-widest opacity-50">
-                                                    Submit Payment
-                                                </h3>
-                                                <p className="mt-2 text-sm opacity-70">
-                                                    Enter the payment reference after making payment so the Managing Director can confirm it and issue the licence.
+                                        {rejected && (
+                                            <div className="border border-rose-200 bg-rose-50 p-5">
+                                                <p className="text-[10px] uppercase tracking-widest text-rose-700/70">
+                                                    Rejection Reason
+                                                </p>
+                                                <p className="mt-3 text-sm text-rose-800 whitespace-pre-wrap">
+                                                    {applicationForStatus.rejection_reason?.trim() || 'No rejection reason was provided.'}
                                                 </p>
                                             </div>
+                                        )}
 
-                                            <div className="space-y-2">
-                                                <label className="col-header">Payment Reference</label>
-                                                <input
-                                                    type="text"
-                                                    value={contractorPaymentReference}
-                                                    onChange={(event) => setContractorPaymentReference(event.target.value)}
-                                                    placeholder="e.g. OGFZA-PAY-20260315-001"
-                                                    className="w-full bg-white border border-brand-line/10 p-3 text-sm focus:ring-1 focus:ring-brand-ink outline-none"
-                                                />
+                                        {queried && (
+                                            <div className="border border-amber-200 bg-amber-50 p-5">
+                                                <p className="text-[10px] uppercase tracking-widest text-amber-800/70">
+                                                    Compliance Query
+                                                </p>
+                                                <p className="mt-3 text-sm text-amber-900 whitespace-pre-wrap">
+                                                    {applicationForStatus.query_note?.trim() || 'Compliance requested revisions for this application.'}
+                                                </p>
                                             </div>
+                                        )}
 
+                                        {!applicationStatusLoading && (
+                                            <section className="space-y-4">
+                                                <div>
+                                                    <h3 className="text-sm font-bold uppercase tracking-widest opacity-50">
+                                                        Workflow Log
+                                                    </h3>
+                                                </div>
+                                                <ApplicationEventLog
+                                                    events={selectedApplicationStatusDetail?.events}
+                                                    formatDisplayDateTime={formatDisplayDateTime}
+                                                />
+                                            </section>
+                                        )}
+
+                                        {awaitingContractorPayment && canResubmitApplications && (
+                                            <div className="border border-brand-line/10 bg-brand-ink/[0.02] p-5 space-y-4">
+                                                <div>
+                                                    <h3 className="text-sm font-bold uppercase tracking-widest opacity-50">
+                                                        Submit Payment
+                                                    </h3>
+                                                    <p className="mt-2 text-sm opacity-70">
+                                                        Enter the payment reference after making payment so the Managing Director can confirm it and issue the licence.
+                                                    </p>
+                                                </div>
+
+                                                <div className="space-y-2">
+                                                    <label className="col-header">Payment Reference</label>
+                                                    <input
+                                                        type="text"
+                                                        value={contractorPaymentReference}
+                                                        onChange={(event) => setContractorPaymentReference(event.target.value)}
+                                                        placeholder="e.g. OGFZA-PAY-20260315-001"
+                                                        className="w-full bg-white border border-brand-line/10 p-3 text-sm focus:ring-1 focus:ring-brand-ink outline-none"
+                                                    />
+                                                </div>
+
+                                                <div className="flex justify-end">
+                                                    <button
+                                                        type="button"
+                                                        disabled={actionLoading}
+                                                        onClick={() => void handleContractorPaymentSubmission()}
+                                                        className="bg-brand-ink text-brand-bg px-4 py-3 text-[10px] font-bold uppercase tracking-widest disabled:opacity-50"
+                                                    >
+                                                        Submit Payment Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {queried && canResubmitApplications && (
                                             <div className="flex justify-end">
                                                 <button
                                                     type="button"
-                                                    disabled={actionLoading}
-                                                    onClick={() => void handleContractorPaymentSubmission()}
-                                                    className="bg-brand-ink text-brand-bg px-4 py-3 text-[10px] font-bold uppercase tracking-widest disabled:opacity-50"
+                                                    onClick={() => void handleStartResubmission(selectedApplication)}
+                                                    className="bg-brand-ink text-brand-bg px-4 py-3 text-[10px] font-bold uppercase tracking-widest"
                                                 >
-                                                    Submit Payment Details
+                                                    Edit & Resubmit
                                                 </button>
                                             </div>
-                                        </div>
-                                    )}
-
-                                    {queried && canResubmitApplications && (
-                                        <div className="flex justify-end">
-                                            <button
-                                                type="button"
-                                                onClick={() => void handleStartResubmission(selectedApplication)}
-                                                className="bg-brand-ink text-brand-bg px-4 py-3 text-[10px] font-bold uppercase tracking-widest"
-                                            >
-                                                Edit & Resubmit
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })()}
+                                        )}
+                                    </div>
+                                );
+                            })()}
                         </div>
                     </div>
                 </div>
@@ -1848,7 +1847,7 @@ export default function Companies({
                                 <p className="text-[10px] uppercase tracking-[0.3em] opacity-35">
                                     {isAdminReviewer ? 'Managing Director Review' : 'Compliance Review'}
                                 </p>
-                                <h2 className="text-2xl font-serif italic text-brand-ink mt-2">
+                                <h2 className="text-2xl font-serif  text-brand-ink mt-2">
                                     {selectedApplicationDetail?.company_name || selectedApplicationName || 'Application Review'}
                                 </h2>
                                 <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -1874,7 +1873,7 @@ export default function Companies({
                         {applicationDetailLoading && (
                             <div className="py-16 text-center">
                                 <div className="w-10 h-10 border-2 border-brand-ink border-t-transparent rounded-full animate-spin mx-auto" />
-                                <p className="mt-4 text-sm italic opacity-50">
+                                <p className="mt-4 text-sm  opacity-50">
                                     Loading application details for review...
                                 </p>
                             </div>
@@ -2132,8 +2131,8 @@ export default function Companies({
 
                                                 <div className="flex flex-wrap justify-end gap-3">
                                                     {!selectedApplicationDetail.linked_company_id &&
-                                                    (selectedApplicationDetail.status === 'Submitted' ||
-                                                        selectedApplicationDetail.status === 'Under Review') ? (
+                                                        (selectedApplicationDetail.status === 'Submitted' ||
+                                                            selectedApplicationDetail.status === 'Under Review') ? (
                                                         <>
                                                             <button
                                                                 type="button"
@@ -2230,7 +2229,7 @@ export default function Companies({
 
                                                 <div className="flex flex-wrap justify-end gap-3">
                                                     {!selectedApplicationDetail.linked_company_id &&
-                                                    selectedApplicationDetail.status === 'Awaiting Admin Approval' ? (
+                                                        selectedApplicationDetail.status === 'Awaiting Admin Approval' ? (
                                                         <>
                                                             <button
                                                                 type="button"
@@ -2392,7 +2391,7 @@ export default function Companies({
                             ))}
                             {companies.length === 0 && (
                                 <tr>
-                                    <td colSpan={8} className="p-8 text-center italic opacity-40">
+                                    <td colSpan={8} className="p-8 text-center  opacity-40">
                                         No approved companies available yet.
                                     </td>
                                 </tr>
@@ -2525,7 +2524,7 @@ export default function Companies({
                             })}
                             {companyApplications.length === 0 && (
                                 <tr>
-                                    <td colSpan={canReviewApplications ? 9 : 7} className="p-8 text-center italic opacity-40">
+                                    <td colSpan={canReviewApplications ? 9 : 7} className="p-8 text-center  opacity-40">
                                         No company applications available yet.
                                     </td>
                                 </tr>

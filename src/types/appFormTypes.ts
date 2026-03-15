@@ -8,18 +8,16 @@ import {
     createInitialIncidentForm,
     createInitialOpsForm,
     createInitialPermitForm,
-    createInitialProjectForm,
-    createInitialUploadDocForm,
+    createInitialTradeOperationForm,
 } from '../hooks/appInitialState';
 
 export type CompanyApplicationForm = ReturnType<typeof createInitialCompanyApplicationForm>;
+export type TradeOperationForm = ReturnType<typeof createInitialTradeOperationForm>;
 export type IncidentForm = ReturnType<typeof createInitialIncidentForm>;
 export type PermitForm = ReturnType<typeof createInitialPermitForm>;
 export type EmployeeForm = ReturnType<typeof createInitialEmployeeForm>;
 export type AttendanceForm = ReturnType<typeof createInitialAttendanceForm>;
 export type CertificationForm = ReturnType<typeof createInitialCertificationForm>;
-export type UploadDocForm = ReturnType<typeof createInitialUploadDocForm>;
-export type ProjectForm = ReturnType<typeof createInitialProjectForm>;
 export type OpsForm = ReturnType<typeof createInitialOpsForm>;
 
 export type HrTab = 'employees' | 'attendance' | 'certs' | 'shifts' | 'safety';

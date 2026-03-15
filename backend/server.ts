@@ -23,6 +23,7 @@ import dashboardRoutes from "./routes/dashboard.routes";
 import notificationRoutes from "./routes/notification.routes";
 import companyRoutes from "./routes/companies.routes";
 import companyApplicationsRoutes from "./routes/company-applications.routes";
+import tradeOperationsRoutes from "./routes/trade-operations.routes";
 import permitsRoutes from "./routes/permits.routes";
 import operationsRoutes from "./routes/operations.routes";
 import revenueRoutes from "./routes/revenue.routes";
@@ -52,6 +53,7 @@ async function startServer() {
   app.use("/api/notifications", notificationRoutes);
   app.use("/api/companies", companyRoutes);
   app.use("/api/company-applications", companyApplicationsRoutes);
+  app.use("/api/trade-operations", tradeOperationsRoutes);
   app.use("/api/operations", operationsRoutes);
   app.use("/api/revenue", revenueRoutes);
   app.use("/api/compliance", complianceRoutes);

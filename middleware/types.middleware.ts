@@ -204,6 +204,71 @@ export interface CompanyApplicationDetail extends CompanyApplication {
     events?: CompanyApplicationEvent[];
 }
 
+export interface TradeOperationRequest {
+    id: number;
+    request_reference: string;
+    company_id: number;
+    company_name: string;
+    company_license_no?: string | null;
+    company_license_type?: string | null;
+    service_family: string;
+    service_type: string;
+    status: string;
+    submitted_at: string | null;
+    submitted_by_name?: string | null;
+    reviewed_at?: string | null;
+    returned_at?: string | null;
+    resubmitted_at?: string | null;
+    approved_at?: string | null;
+    rejected_at?: string | null;
+    query_note?: string | null;
+    rejection_reason?: string | null;
+}
+
+export interface TradeOperationDocument {
+    id?: number;
+    request_id?: number;
+    document_type: string;
+    file_name: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+}
+
+export interface TradeOperationEvent {
+    id: number;
+    request_id: number;
+    event_type: string;
+    actor_user_id?: number | null;
+    actor_name?: string | null;
+    actor_role?: string | null;
+    from_status?: string | null;
+    to_status?: string | null;
+    note?: string | null;
+    metadata_json?: string | null;
+    created_at: string;
+}
+
+export interface TradeOperationRequestDetail extends TradeOperationRequest {
+    goods_description?: string | null;
+    cargo_category?: string | null;
+    origin_location?: string | null;
+    destination_location?: string | null;
+    quantity_value?: number | string | null;
+    quantity_unit?: string | null;
+    weight_kg?: number | string | null;
+    container_count?: number | null;
+    shipment_reference?: string | null;
+    customs_reference?: string | null;
+    operation_summary?: string | null;
+    requested_completion_date?: string | null;
+    submitted_by_name?: string | null;
+    reviewed_by_name?: string | null;
+    returned_by_name?: string | null;
+    rejected_by_name?: string | null;
+    documents?: TradeOperationDocument[];
+    events?: TradeOperationEvent[];
+}
+
 export interface Permit {
     id: number;
     company_name: string;

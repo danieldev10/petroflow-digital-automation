@@ -4,6 +4,7 @@ import {
     User,
     Company,
     CompanyApplication,
+    TradeOperationRequest,
     Permit,
     Operation,
     Revenue,
@@ -16,8 +17,6 @@ import {
     Shift,
     HRStats,
     Contractor,
-    ContractorDocument,
-    WorkOrder,
     MaintenanceRecord,
     TeamMember,
 } from '@/middleware/types.middleware';
@@ -32,6 +31,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
     const [stats, setStats] = useState<Stats<any> | null>(null);
     const [companies, setCompanies] = useState<Company[]>([]);
     const [companyApplications, setCompanyApplications] = useState<CompanyApplication[]>([]);
+    const [tradeOperations, setTradeOperations] = useState<TradeOperationRequest[]>([]);
     const [permits, setPermits] = useState<Permit[]>([]);
     const [operations, setOperations] = useState<Operation[]>([]);
     const [revenue, setRevenue] = useState<Revenue[]>([]);
@@ -46,8 +46,6 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
     const [hrStats, setHrStats] = useState<HRStats | null>(null);
 
     const [contractors, setContractors] = useState<Contractor[]>([]);
-    const [contractorDocs, setContractorDocs] = useState<ContractorDocument[]>([]);
-    const [workOrders, setWorkOrders] = useState<WorkOrder[]>([]);
     const [maintenance, setMaintenance] = useState<MaintenanceRecord[]>([]);
     const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
     const [allUsers, setAllUsers] = useState<User[]>([]);
@@ -64,12 +62,21 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
                 Boolean(user?.role?.includes('Admin')) ||
                 Boolean(user?.role?.includes('Compliance')) ||
                 Boolean(user?.role?.includes('Contractor'));
+            const canAccessTradeOperations =
+                Boolean(user?.role?.includes('Admin')) ||
+                Boolean(user?.role?.includes('Compliance')) ||
+                Boolean(user?.role?.includes('Contractor'));
 
-            const [s, c, companyApps, p, o, r, comp, a, inc, emp, att, certs, shf, hrs, usersData] = await Promise.all([
+            const [s, c, companyApps, tradeOps, p, o, r, comp, a, inc, emp, att, certs, shf, hrs, usersData] = await Promise.all([
                 fetch('/api/dashboard/stats', { headers }).then((res) => res.json()),
                 fetch('/api/companies', { headers }).then((res) => res.json()),
                 canAccessCompanyApplications
                     ? fetch('/api/company-applications', { headers }).then((res) =>
+                        res.ok ? res.json() : []
+                    )
+                    : Promise.resolve([]),
+                canAccessTradeOperations
+                    ? fetch('/api/trade-operations', { headers }).then((res) =>
                         res.ok ? res.json() : []
                     )
                     : Promise.resolve([]),
@@ -92,6 +99,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
             setStats(s);
             setCompanies(c);
             setCompanyApplications(companyApps);
+            setTradeOperations(tradeOps);
             setPermits(p);
             setOperations(o);
             setRevenue(r);
@@ -105,17 +113,13 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
             setHrStats(hrs);
             setAllUsers(usersData || []);
 
-            const [cont, contDocs, wo, maint, team] = await Promise.all([
+            const [cont, maint, team] = await Promise.all([
                 fetch('/api/contractors', { headers }).then((res) => res.json()),
-                fetch('/api/contractors/documents', { headers }).then((res) => res.json()),
-                fetch('/api/work-orders', { headers }).then((res) => res.json()),
                 fetch('/api/maintenance', { headers }).then((res) => res.json()),
                 fetch('/api/change-management/team', { headers }).then((res) => res.json()),
             ]);
 
             setContractors(cont);
-            setContractorDocs(contDocs);
-            setWorkOrders(wo);
             setMaintenance(maint);
             setTeamMembers(team);
         } catch (error) {
@@ -130,6 +134,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
         stats,
         companies,
         companyApplications,
+        tradeOperations,
         permits,
         operations,
         revenue,
@@ -142,8 +147,6 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
         shifts,
         hrStats,
         contractors,
-        contractorDocs,
-        workOrders,
         maintenance,
         teamMembers,
         allUsers,
