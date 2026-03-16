@@ -22,7 +22,6 @@ export const canAccessTab = (user: User | null, tab: string) => {
 
     if (tab === 'dashboard') return !isContractor;
     if (tab === 'operations' && hasRole(user, 'Operations')) return true;
-    if (tab === 'hr' && (hasRole(user, 'HR Manager') || hasRole(user, 'Operations'))) return true;
     if (tab === 'finance' && hasRole(user, 'Finance')) return true;
     if (tab === 'companies' && (hasRole(user, 'Compliance') || isContractor)) return true;
     if (tab === 'trade-operations' && (hasRole(user, 'Compliance') || isContractor)) return true;

@@ -20,10 +20,8 @@ const availableRoles = [
     'Compliance',
     'Operations',
     'Finance',
-    'HR Manager',
     'Contractor',
     'Admin, Finance',
-    'Compliance, HR Manager',
 ];
 
 const initialInviteForm: InviteUserPayload = {

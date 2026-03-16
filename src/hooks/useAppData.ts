@@ -10,14 +10,7 @@ import {
     ComplianceCase,
     Asset,
     Incident,
-    Employee,
-    AttendanceRecord,
-    Certification,
-    Shift,
-    HRStats,
-    Contractor,
     MaintenanceRecord,
-    TeamMember,
 } from '@/middleware/types.middleware';
 
 type UseAppDataParams = {
@@ -37,15 +30,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
     const [assets, setAssets] = useState<Asset[]>([]);
     const [incidents, setIncidents] = useState<Incident[]>([]);
 
-    const [employees, setEmployees] = useState<Employee[]>([]);
-    const [attendance, setAttendance] = useState<AttendanceRecord[]>([]);
-    const [certifications, setCertifications] = useState<Certification[]>([]);
-    const [shifts, setShifts] = useState<Shift[]>([]);
-    const [hrStats, setHrStats] = useState<HRStats | null>(null);
-
-    const [contractors, setContractors] = useState<Contractor[]>([]);
     const [maintenance, setMaintenance] = useState<MaintenanceRecord[]>([]);
-    const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
     const [allUsers, setAllUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -81,7 +66,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
                 Boolean(user?.role?.includes('Admin')) ||
                 Boolean(user?.role?.includes('Operations'));
 
-            const [s, c, companyApps, tradeOps, o, r, comp, a, inc, emp, att, certs, shf, hrs, usersData] = await Promise.all([
+            const [s, c, companyApps, tradeOps, o, r, comp, a, inc, usersData] = await Promise.all([
                 fetch('/api/dashboard/stats', { headers }).then((res) => res.json()),
                 fetch('/api/companies', { headers }).then((res) => res.json()),
                 canAccessCompanyApplications
@@ -115,11 +100,6 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
                         res.ok ? res.json() : []
                     )
                     : Promise.resolve([]),
-                fetch('/api/hr/employees', { headers }).then((res) => res.json()),
-                fetch('/api/hr/attendance', { headers }).then((res) => res.json()),
-                fetch('/api/hr/certifications', { headers }).then((res) => res.json()),
-                fetch('/api/hr/shifts', { headers }).then((res) => res.json()),
-                fetch('/api/hr/stats', { headers }).then((res) => res.json()),
                 user?.role?.includes('Admin')
                     ? fetch('/api/users', { headers }).then((res) => res.json())
                     : Promise.resolve([]),
@@ -134,26 +114,15 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
             setCompliance(comp);
             setAssets(a);
             setIncidents(inc);
-            setEmployees(emp);
-            setAttendance(att);
-            setCertifications(certs);
-            setShifts(shf);
-            setHrStats(hrs);
             setAllUsers(usersData || []);
 
-            const [cont, maint, team] = await Promise.all([
-                fetch('/api/contractors', { headers }).then((res) => res.json()),
-                canAccessOperationsControl
-                    ? fetch('/api/maintenance', { headers }).then((res) =>
-                        res.ok ? res.json() : []
-                    )
-                    : Promise.resolve([]),
-                fetch('/api/change-management/team', { headers }).then((res) => res.json()),
-            ]);
+            const maint = canAccessOperationsControl
+                ? await fetch('/api/maintenance', { headers }).then((res) =>
+                    res.ok ? res.json() : []
+                )
+                : [];
 
-            setContractors(cont);
             setMaintenance(maint);
-            setTeamMembers(team);
         } catch (error) {
             console.error('Failed to fetch data', error);
             onAuthFail();
@@ -172,14 +141,7 @@ export function useAppData({ token, user, onAuthFail }: UseAppDataParams) {
         compliance,
         assets,
         incidents,
-        employees,
-        attendance,
-        certifications,
-        shifts,
-        hrStats,
-        contractors,
         maintenance,
-        teamMembers,
         allUsers,
         loading,
         fetchData,

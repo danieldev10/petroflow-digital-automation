@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
-    TrendingUp,
     AlertCircle,
     Mail,
     Lock,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { User } from '@/middleware/types.middleware';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 export const LoginPage = ({ onLogin, onSwitchToSignup, onSwitchToForgot }: { onLogin: (user: User, token: string) => void, onSwitchToSignup: () => void, onSwitchToForgot: () => void }) => {
     const [email, setEmail] = useState('');
@@ -17,9 +17,10 @@ export const LoginPage = ({ onLogin, onSwitchToSignup, onSwitchToForgot }: { onL
 
     const demoUsers = [
         { email: 'admin@petroflow.com', pass: 'admin123', role: 'Admin' },
-        { email: 'achonma.tk@gmail.com', pass: 'Achonmatanko10', role: 'Contractor' },
+        { email: 'contractor.alpha@ogfza.example.com', pass: 'demo123', role: 'Contractor' },
         { email: 'compliance@ogfza.gov', pass: 'demo123', role: 'Compliance' },
-        { email: 'ops@shell.com', pass: 'demo123', role: 'Operations' },
+        { email: 'operations@ogfza.gov', pass: 'demo123', role: 'Operations' },
+        { email: 'finance@ogfza.gov', pass: 'demo123', role: 'Finance' },
     ];
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -52,14 +53,10 @@ export const LoginPage = ({ onLogin, onSwitchToSignup, onSwitchToForgot }: { onL
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full max-w-md bg-white border border-brand-line/10 p-8 shadow-2xl"
             >
-                <div className="flex flex-col items-center gap-2 mb-8 justify-center">
-                    <div className="w-12 h-12 bg-brand-ink flex items-center justify-center rounded-sm">
-                        <TrendingUp size={24} className="text-brand-bg" />
-                    </div>
-                    <h1 className="font-bold tracking-tighter text-2xl text-center">Oil & Gas Free Zone Authority</h1>
+                <div className="mb-8 flex flex-col items-center justify-center gap-3">
+                    <OgfzaLogo className="w-40 sm:w-44" />
+                    <h1 className="font-bold tracking-tighter text-sm text-center">DIGITAL AUTOMATION - PROTOTYPE <span style={{ fontSize: '9px' }}>v1.0</span></h1>
                 </div>
-
-                <h5 className="font-serif mb-6 text-center" style={{ fontSize: '10px' }}>PROTOTYPE V1.0</h5>
 
                 {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest">{error}</div>}
 

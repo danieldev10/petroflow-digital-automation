@@ -9,12 +9,6 @@ import {
     ComplianceCase,
     Asset,
     Incident,
-    Employee,
-    AttendanceRecord,
-    Certification,
-    Shift,
-    HRStats,
-    Contractor,
     MaintenanceRecord,
     Stats,
 } from '@/middleware/types.middleware';
@@ -27,13 +21,11 @@ import SettingsView from '@/src/views/Settings';
 import Companies from '@/src/views/Companies';
 import Incidents from '@/src/views/Incidents';
 import Operations from '@/src/views/Operations';
-import HR from '@/src/views/HR';
 import TradeOperations from '@/src/views/TradeOperations';
 import type { CompanyApplicationForm } from '@/src/types/appFormTypes';
 import type { TradeOperationForm } from '@/src/types/appFormTypes';
 import type { ModuleSearchTarget } from '@/src/utils/globalSearch';
 
-type HrTab = 'employees' | 'attendance' | 'certs' | 'shifts' | 'safety';
 type NewCompanyForm = CompanyApplicationForm;
 type NewTradeOperationForm = TradeOperationForm;
 
@@ -43,32 +35,6 @@ type NewIncidentForm = {
     incident_type: string;
     severity: string;
     description: string;
-};
-
-type NewEmployeeForm = {
-    full_name: string;
-    department: string;
-    position: string;
-    zone: string;
-    email: string;
-    phone: string;
-    company: string;
-};
-
-type NewAttendanceForm = {
-    employee_id: string;
-    date: string;
-    shift: string;
-    check_in: string;
-    check_out: string;
-    status: string;
-};
-
-type NewCertificationForm = {
-    employee_id: string;
-    cert_name: string;
-    issued_date: string;
-    expiry_date: string;
 };
 
 type InviteUserForm = {
@@ -106,12 +72,6 @@ type ContentRouterProps = {
     compliance: ComplianceCase[];
     assets: Asset[];
     incidents: Incident[];
-    employees: Employee[];
-    attendance: AttendanceRecord[];
-    certifications: Certification[];
-    shifts: Shift[];
-    hrStats: HRStats | null;
-    contractors: Contractor[];
     maintenance: MaintenanceRecord[];
     allUsers: User[];
 
@@ -170,27 +130,6 @@ type ContentRouterProps = {
         reviewNote?: string
     ) => void | Promise<void>;
 
-    hrTab: HrTab;
-    setHrTab: Dispatch<SetStateAction<HrTab>>;
-
-    showAddEmpModal: boolean;
-    setShowAddEmpModal: Dispatch<SetStateAction<boolean>>;
-    newEmp: NewEmployeeForm;
-    setNewEmp: Dispatch<SetStateAction<NewEmployeeForm>>;
-    addEmployeeHandler: FormActionHandler;
-
-    showLogAttModal: boolean;
-    setShowLogAttModal: Dispatch<SetStateAction<boolean>>;
-    newAtt: NewAttendanceForm;
-    setNewAtt: Dispatch<SetStateAction<NewAttendanceForm>>;
-    logAttendanceHandler: FormActionHandler;
-
-    showLogCertModal: boolean;
-    setShowLogCertModal: Dispatch<SetStateAction<boolean>>;
-    newCert: NewCertificationForm;
-    setNewCert: Dispatch<SetStateAction<NewCertificationForm>>;
-    logCertHandler: FormActionHandler;
-
     showOpsModal: boolean;
     setShowOpsModal: Dispatch<SetStateAction<boolean>>;
     newOps: NewOpsForm;
@@ -220,12 +159,6 @@ export default function ContentRouter({
     compliance,
     assets,
     incidents,
-    employees,
-    attendance,
-    certifications,
-    shifts,
-    hrStats,
-    contractors,
     maintenance,
     allUsers,
 
@@ -259,27 +192,6 @@ export default function ContentRouter({
     submitIncidentFollowUpHandler,
     updateIncidentStatusHandler,
 
-    hrTab,
-    setHrTab,
-
-    showAddEmpModal,
-    setShowAddEmpModal,
-    newEmp,
-    setNewEmp,
-    addEmployeeHandler,
-
-    showLogAttModal,
-    setShowLogAttModal,
-    newAtt,
-    setNewAtt,
-    logAttendanceHandler,
-
-    showLogCertModal,
-    setShowLogCertModal,
-    newCert,
-    setNewCert,
-    logCertHandler,
-
     showOpsModal,
     setShowOpsModal,
     newOps,
@@ -295,10 +207,6 @@ export default function ContentRouter({
                 <Dashboard
                     userRole={user.role}
                     stats={stats}
-                    hrStats={hrStats}
-                    shifts={shifts}
-                    attendance={attendance}
-                    employees={employees}
                     companies={companies}
                     companyApplications={companyApplications}
                     tradeOperations={tradeOperations}
@@ -309,14 +217,6 @@ export default function ContentRouter({
                     assets={assets}
                     incidents={incidents}
                     allUsers={allUsers}
-                    onGoToHrAttendance={() => {
-                        setActiveTab('hr');
-                        setHrTab('attendance');
-                    }}
-                    onGoToHrEmployees={() => {
-                        setActiveTab('hr');
-                        setHrTab('employees');
-                    }}
                     onGoToCompliance={() => setActiveTab('compliance')}
                 />
             );
@@ -438,36 +338,6 @@ export default function ContentRouter({
                     actionLoading={actionLoading}
                     onInviteUser={onInviteUser}
                     onUpdateUserRole={updateUserRoleHandler}
-                />
-            );
-
-        case 'hr':
-            return (
-                <HR
-                    hrStats={hrStats}
-                    shifts={shifts}
-                    employees={employees}
-                    attendance={attendance}
-                    certifications={certifications}
-                    incidents={incidents}
-                    hrTab={hrTab}
-                    setHrTab={setHrTab}
-                    showAddEmpModal={showAddEmpModal}
-                    setShowAddEmpModal={setShowAddEmpModal}
-                    newEmp={newEmp}
-                    setNewEmp={setNewEmp}
-                    showLogAttModal={showLogAttModal}
-                    setShowLogAttModal={setShowLogAttModal}
-                    newAtt={newAtt}
-                    setNewAtt={setNewAtt}
-                    showLogCertModal={showLogCertModal}
-                    setShowLogCertModal={setShowLogCertModal}
-                    newCert={newCert}
-                    setNewCert={setNewCert}
-                    actionLoading={actionLoading}
-                    onAddEmployee={addEmployeeHandler}
-                    onLogAttendance={logAttendanceHandler}
-                    onLogCert={logCertHandler}
                 />
             );
 

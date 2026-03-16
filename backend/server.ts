@@ -29,11 +29,8 @@ import revenueRoutes from "./routes/revenue.routes";
 import complianceRoutes from "./routes/compliance.routes";
 import incidentsRoutes from "./routes/incidents.routes";
 import assetsRoutes from "./routes/assets.routes";
-import hrRoutes from "./routes/hr.routes";
 import userRoutes from "./routes/users.routes";
-import contractorsRoutes from "./routes/contractos.routes";
 import maintenanceRoutes from "./routes/maintenance.routes";
-import changeManagementRoutes from "./routes/change-management.routes";
 import { authenticateToken } from "../middleware/auth.middleware";
 
 const JWT_SECRET = process.env.JWT_SECRET || "petroflow-secret-key-2024";
@@ -57,11 +54,8 @@ async function startServer() {
   app.use("/api/compliance", complianceRoutes);
   app.use("/api/incidents", incidentsRoutes);
   app.use("/api/assets", assetsRoutes);
-  app.use("/api/hr", hrRoutes);
   app.use("/api/users", userRoutes);
-  app.use("/api", contractorsRoutes);
   app.use("/api/maintenance", maintenanceRoutes);
-  app.use("/api/change-management", changeManagementRoutes);
   app.use("/api", (_req, res) => {
     res.status(404).json({ error: "API route not found." });
   });

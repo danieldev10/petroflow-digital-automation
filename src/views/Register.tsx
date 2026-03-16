@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { User } from '@/middleware/types.middleware';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 export const SignupPage = ({ onSwitchToLogin }: { onSwitchToLogin: () => void }) => {
     const [formData, setFormData] = useState({
@@ -47,6 +48,7 @@ export const SignupPage = ({ onSwitchToLogin }: { onSwitchToLogin: () => void })
         return (
             <div className="min-h-screen flex items-center justify-center bg-brand-bg p-4">
                 <div className="w-full max-w-md bg-white border border-brand-line/10 p-8 text-center">
+                    <OgfzaLogo className="mx-auto mb-5 w-36 sm:w-40" />
                     <ShieldCheck size={48} className="mx-auto mb-4 text-emerald-600" />
                     <h2 className="text-xl font-serif italic mb-2">Request Submitted</h2>
                     <p className="text-sm opacity-60 mb-6">Your account has been created. You can now log in with your credentials.</p>
@@ -63,7 +65,10 @@ export const SignupPage = ({ onSwitchToLogin }: { onSwitchToLogin: () => void })
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full max-w-md bg-white border border-brand-line/10 p-8 shadow-2xl"
             >
-                <h2 className="text-xl font-serif mb-6 text-center">OGFZA User Registration</h2>
+                <div className="mb-6 flex flex-col items-center gap-3">
+                    <OgfzaLogo className="w-36 sm:w-40" />
+                    <h2 className="text-xl font-serif text-center">OGFZA User Registration</h2>
+                </div>
 
                 {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest">{error}</div>}
 

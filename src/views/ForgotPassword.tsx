@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
     ShieldCheck,
 } from 'lucide-react';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 export const ForgotPasswordPage = ({ onSwitchToLogin }: { onSwitchToLogin: () => void }) => {
     const [email, setEmail] = useState('');
@@ -62,7 +63,10 @@ export const ForgotPasswordPage = ({ onSwitchToLogin }: { onSwitchToLogin: () =>
     return (
         <div className="min-h-screen flex items-center justify-center bg-brand-bg p-4">
             <div className="w-full max-w-md bg-white border border-brand-line/10 p-8 shadow-2xl">
-                <h2 className="text-xl font-serif italic mb-6 text-center">Security Verification</h2>
+                <div className="mb-6 flex flex-col items-center gap-3">
+                    <OgfzaLogo className="w-36 sm:w-40" />
+                    <h2 className="text-xl font-serif italic text-center">Security Verification</h2>
+                </div>
                 {error && <div className="mb-4 p-3 bg-red-50 text-red-600 text-[10px] font-bold uppercase">{error}</div>}
 
                 {view === 'email' && (
@@ -99,6 +103,7 @@ export const ForgotPasswordPage = ({ onSwitchToLogin }: { onSwitchToLogin: () =>
 
                 {view === 'success' && (
                     <div className="text-center">
+                        <OgfzaLogo className="mx-auto mb-5 w-32 sm:w-36" />
                         <ShieldCheck size={48} className="mx-auto mb-4 text-emerald-600" />
                         <p className="text-sm opacity-60 mb-6">Password reset successful. You can now login with your new credentials.</p>
                         <button onClick={onSwitchToLogin} className="w-full bg-brand-ink text-brand-bg py-3 font-bold uppercase tracking-widest text-xs">Sign In</button>

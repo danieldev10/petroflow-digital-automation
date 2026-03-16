@@ -21,16 +21,16 @@ This contains everything you need to run your app locally.
 
 Create a .env file in the project root and add the following
 ```
-- DB_HOST=localhost
-- DB_PORT=1433
-- DB_NAME=PetroflowDB
-- DB_USER=sa
-- DB_PASSWORD=your_password_here
-- JWT_SECRET=your_jwt_secret_here
-- SMTP_HOST=smtp.gmail.com
-- SMTP_PORT=587
-- SMTP_USER=your_smtp_email_here
-- SMTP_PASS=your_smtp_password_here
+DB_HOST=localhost
+DB_PORT=1433
+DB_NAME=PetroflowDB
+DB_USER=sa
+DB_PASSWORD=your_password_here
+JWT_SECRET=your_jwt_secret_here
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_smtp_email_here
+SMTP_PASS=your_smtp_password_here
 ```
 ## Running SQL server locally with Docker
 
@@ -50,5 +50,22 @@ docker run --platform linux/amd64 -e 'ACCEPT_EULA=Y' \
 ### Apply the schema
 ```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i schema.sql```
 
+### Seed demo users
+```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i migrations/demo_users.sql```
+
+### Seed the dummy data
+```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i migrations/dummy_data.sql```
+
+## Demo Logins
+- Admin: `admin@petroflow.com` / `admin123`
+- Compliance: `compliance@ogfza.gov` / `demo123`
+- Operations: `operations@ogfza.gov` / `demo123`
+- Finance: `finance@ogfza.gov` / `demo123`
+- Contractor: `contractor.alpha@ogfza.example.com` / `demo123`
+- Contractor: `contractor.beta@ogfza.example.com` / `demo123`
+- Contractor: `contractor.gamma@ogfza.example.com` / `demo123`
+
 ## Run the App
 ```npm run dev```
+
+Open `http://localhost:3001` in your browser.

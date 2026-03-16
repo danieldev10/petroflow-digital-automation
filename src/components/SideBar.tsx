@@ -6,7 +6,6 @@ import {
     DollarSign,
     ShieldCheck,
     Settings,
-    TrendingUp,
     LogOut,
     AlertTriangle,
     Package,
@@ -17,6 +16,7 @@ import {
 import { User } from '@/middleware/types.middleware';
 import { SidebarItem } from './SidbarItems';
 import { canAccessTab } from '@/src/hooks/appAccess';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 export type AppTab =
     | 'dashboard'
@@ -27,8 +27,7 @@ export type AppTab =
     | 'incidents'
     | 'trade-operations'
     | 'logistics'
-    | 'settings'
-    | 'hr';
+    | 'settings';
 
 type SidebarProps = {
     user: User;
@@ -59,10 +58,7 @@ export function Sidebar({
         {
             key: 'dashboard' as AppTab,
             icon: LayoutDashboard,
-            label:
-                !userHasRole('Admin') && userHasRole('HR Manager')
-                    ? 'HR Dashboard'
-                    : 'Executive Dashboard',
+            label: 'Executive Dashboard',
         },
         { key: 'companies' as AppTab, icon: Building2, label: 'Company Management' },
         { key: 'trade-operations' as AppTab, icon: ArrowLeftRight, label: 'Trade Operations' },
@@ -81,15 +77,15 @@ export function Sidebar({
             <div className="p-6 border-b border-brand-line">
                 <div className="flex items-center justify-between gap-4">
                     <div>
-                        <div className="flex items-center gap-2 mb-1">
-                            <div className="w-6 h-6 bg-brand-ink flex items-center justify-center rounded-sm">
-                                <TrendingUp size={14} className="text-brand-bg" />
+                        <center>
+                            <div style={{ width: '86px' }}>
+                                <OgfzaLogo className="w-full" />
                             </div>
-                            <h1 className="font-bold tracking-tighter text-base">OGFZA_automation</h1>
-                        </div>
-                        <p className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40">
-                            Digital Automation v1.0
-                        </p>
+
+                            <p className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40">
+                                Digital Automation v1.0
+                            </p>
+                        </center>
                     </div>
                     {mobile && (
                         <button
@@ -105,11 +101,11 @@ export function Sidebar({
             </div>
 
             <nav className="flex-1 py-4 overflow-y-auto">
-                <div className="px-4 mb-2">
+                {/* <div className="px-4 mb-2">
                     <p className="text-[10px] uppercase tracking-widest font-bold opacity-30 mb-2">
                         Core Operations
                     </p>
-                </div>
+                </div> */}
 
                 {sidebarItems.map((item) => (
                     <React.Fragment key={item.key}>

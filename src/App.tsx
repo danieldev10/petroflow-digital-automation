@@ -8,6 +8,7 @@ import { LoginPage } from '@/src/views/Login';
 import { SignupPage } from '@/src/views/Register';
 import Sidebar, { type AppTab } from './components/SideBar';
 import Header from '@/src/components/Header';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 import ContentRouter from './components/ContentRouter';
 import { loginUser, logoutUser, handleChangePassword } from './hooks/useAuthSessions';
 import { useAppData } from './hooks/useAppData';
@@ -76,12 +77,6 @@ export default function App() {
     compliance,
     assets,
     incidents,
-    employees,
-    attendance,
-    certifications,
-    shifts,
-    hrStats,
-    contractors,
     maintenance,
     allUsers,
     loading,
@@ -122,27 +117,6 @@ export default function App() {
     reportIncidentHandler,
     submitIncidentFollowUpHandler,
     updateIncidentStatusHandler,
-
-    showAddEmpModal,
-    setShowAddEmpModal,
-    newEmp,
-    setNewEmp,
-    addEmployeeHandler,
-
-    showLogAttModal,
-    setShowLogAttModal,
-    newAtt,
-    setNewAtt,
-    logAttendanceHandler,
-
-    showLogCertModal,
-    setShowLogCertModal,
-    newCert,
-    setNewCert,
-    logCertHandler,
-
-    hrTab,
-    setHrTab,
 
     showOpsModal,
     setShowOpsModal,
@@ -248,6 +222,7 @@ export default function App() {
   if (loading && !stats) {
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-brand-bg gap-4">
+        <OgfzaLogo className="w-40 sm:w-44" />
         <div className="w-12 h-12 border-2 border-brand-ink border-t-transparent rounded-full animate-spin" />
         <p className="font-serif text-sm animate-pulse">
           Initializing OGFZA Digital Automation Infrastructure...
@@ -315,12 +290,6 @@ export default function App() {
                 compliance={compliance}
                 assets={assets}
                 incidents={incidents}
-                employees={employees}
-                attendance={attendance}
-                certifications={certifications}
-                shifts={shifts}
-                hrStats={hrStats}
-                contractors={contractors}
                 maintenance={maintenance}
                 allUsers={allUsers}
                 actionLoading={actionLoading}
@@ -349,23 +318,6 @@ export default function App() {
                 reportIncidentHandler={reportIncidentHandler}
                 submitIncidentFollowUpHandler={submitIncidentFollowUpHandler}
                 updateIncidentStatusHandler={updateIncidentStatusHandler}
-                hrTab={hrTab}
-                setHrTab={setHrTab}
-                showAddEmpModal={showAddEmpModal}
-                setShowAddEmpModal={setShowAddEmpModal}
-                newEmp={newEmp}
-                setNewEmp={setNewEmp}
-                addEmployeeHandler={addEmployeeHandler}
-                showLogAttModal={showLogAttModal}
-                setShowLogAttModal={setShowLogAttModal}
-                newAtt={newAtt}
-                setNewAtt={setNewAtt}
-                logAttendanceHandler={logAttendanceHandler}
-                showLogCertModal={showLogCertModal}
-                setShowLogCertModal={setShowLogCertModal}
-                newCert={newCert}
-                setNewCert={setNewCert}
-                logCertHandler={logCertHandler}
                 showOpsModal={showOpsModal}
                 setShowOpsModal={setShowOpsModal}
                 newOps={newOps}

@@ -14,7 +14,6 @@ router.get("/", authenticateToken, async (req: AuthenticatedRequest, res) => {
             "Compliance",
             "Finance",
             "Operations",
-            "HR Manager",
         ]);
         const restrictToOwnCompanies =
             hasRole(req.user?.role, ["Contractor"]) && !canSeeAllCompanies;
@@ -67,7 +66,6 @@ router.get("/:id", authenticateToken, async (req: AuthenticatedRequest, res) => 
             "Compliance",
             "Finance",
             "Operations",
-            "HR Manager",
         ]);
         const restrictToOwnCompanies =
             hasRole(req.user?.role, ["Contractor"]) && !canSeeAllCompanies;

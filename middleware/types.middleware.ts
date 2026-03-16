@@ -401,52 +401,6 @@ export interface IncidentDetail extends Incident {
     events?: IncidentEvent[];
 }
 
-export interface Contractor {
-    id: number;
-    name: string;
-    category: string;
-    representative: string;
-    email: string;
-    phone: string;
-    status: string;
-    joined_date: string;
-}
-
-export interface ContractorDocument {
-    id: number;
-    contractor_id: number;
-    contractor_name?: string;
-    doc_type: string;
-    file_name: string;
-    upload_date: string;
-    status: string;
-}
-
-export interface Employee {
-    id: number;
-    full_name: string;
-    department: string;
-    position: string;
-    zone: string;
-    status: string;
-    hire_date: string;
-    email: string;
-    phone: string;
-    company: string;
-}
-
-export interface WorkOrder {
-    id: number;
-    contractor_id: number;
-    contractor_name: string;
-    title: string;
-    description: string;
-    location: string;
-    start_date: string;
-    end_date?: string;
-    status: string;
-}
-
 export interface MaintenanceRecord {
     id: number;
     asset_id: number;
@@ -460,57 +414,6 @@ export interface MaintenanceRecord {
     maintenance_date: string;
     next_due_date: string;
     status: string;
-}
-
-export interface TeamMember {
-    id: number;
-    full_name: string;
-    role: string;
-    responsibilities: string;
-    department: string;
-    status: string;
-}
-
-export interface AttendanceRecord {
-    id: number;
-    employee_id: number;
-    full_name: string;
-    department: string;
-    zone: string;
-    date: string;
-    shift: string;
-    check_in: string;
-    check_out: string;
-    status: string;
-}
-
-export interface Certification {
-    id: number;
-    employee_id: number;
-    full_name: string;
-    department: string;
-    company: string;
-    cert_name: string;
-    issued_date: string;
-    expiry_date: string;
-    status: string;
-}
-
-export interface Shift {
-    id: number;
-    shift_name: string;
-    zone: string;
-    start_time: string;
-    end_time: string;
-    capacity: number;
-    assigned: number;
-}
-
-export interface HRStats {
-    totalEmployees: { count: number };
-    presentToday: { count: number };
-    expiredCerts: { count: number };
-    onLeave: { count: number };
 }
 export interface AuthenticatedRequest extends Request {
     user?: JwtUser;

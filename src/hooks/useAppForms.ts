@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { handleInviteUser, handleUpdateUserRole } from './useAuthSessions';
 import { useCompanyForms } from './forms/useCompanyForms';
 import { useIncidentForms } from './forms/useIncidentForms';
-import { useHrForms } from './forms/useHrForms';
 import { useOperationsForms } from './forms/useOperationsForms';
 import { useTradeOperationForms } from './forms/useTradeOperationForms';
 
@@ -23,7 +22,6 @@ export function useAppForms({ token, fetchData }: UseAppFormsParams) {
 
     const companyForms = useCompanyForms(sharedParams);
     const incidentForms = useIncidentForms(sharedParams);
-    const hrForms = useHrForms(sharedParams);
     const operationsForms = useOperationsForms(sharedParams);
     const tradeOperationForms = useTradeOperationForms(sharedParams);
 
@@ -34,7 +32,6 @@ export function useAppForms({ token, fetchData }: UseAppFormsParams) {
         actionLoading,
         ...companyForms,
         ...incidentForms,
-        ...hrForms,
         ...operationsForms,
         ...tradeOperationForms,
         inviteUserHandler,

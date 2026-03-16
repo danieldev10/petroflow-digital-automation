@@ -5,6 +5,7 @@ import { AppTab } from './SideBar';
 import type { ActionCenterItem } from '@/src/utils/actionCenter';
 import type { LiveNotification } from '@/src/hooks/useNotifications';
 import type { GlobalSearchResult, ModuleSearchTarget } from '@/src/utils/globalSearch';
+import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 type HeaderProps = {
     user: User;
@@ -105,10 +106,7 @@ export function Header({
 
                 <div className="hidden sm:block h-4 w-[1px] bg-brand-line/20" />
 
-                <div className="hidden md:flex items-center gap-2 text-[10px] font-mono opacity-40 min-w-0">
-                    <Clock size={12} />
-                    <span className="truncate">Unit: {user.operationalUnit}</span>
-                </div>
+
             </div>
 
             <div
@@ -324,11 +322,10 @@ export function Header({
                                                                 </p>
                                                             )}
                                                         </div>
-                                                        <span className={`shrink-0 inline-flex items-center rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-widest ${
-                                                            notification.type === 'SUCCESS'
-                                                                ? toneClasses.success
-                                                                : 'bg-brand-ink/5 text-brand-ink/65'
-                                                        }`}>
+                                                        <span className={`shrink-0 inline-flex items-center rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-widest ${notification.type === 'SUCCESS'
+                                                            ? toneClasses.success
+                                                            : 'bg-brand-ink/5 text-brand-ink/65'
+                                                            }`}>
                                                             {notification.type}
                                                         </span>
                                                     </div>
