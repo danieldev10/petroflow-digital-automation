@@ -325,7 +325,7 @@ VALUES
     '+234-809-440-2004',
     'contractor.beta@ogfza.example.com',
     'https://nigeratlanticdev.example.com/lagos',
-    'Daniel Audu',
+    'Jordan Cole',
     'Project Director',
     '+234-701-440-2004',
     'contractor.beta@ogfza.example.com',
@@ -347,7 +347,7 @@ VALUES
     'Civil work materials, electrical fittings, marine utility kits, and terminal hardware.',
     'Prepared industrial pads, serviced plots, utility corridors, and marine support infrastructure.',
     '2025-04-10',
-    'Daniel Audu',
+    'Jordan Cole',
     'Project Director',
     '2025-03-05',
     'niger_atlantic_developers_company_seal.png',
@@ -1073,16 +1073,16 @@ INNER JOIN (
     SELECT 'FZA-DEMO-002', 'PaymentSubmitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-DELTA-20260121-004 for admin confirmation.', CAST('2026-01-21T13:45:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-002', 'LicenseIssued', @admin_user_id, 'System Admin', 'Admin', 'Payment Submitted', 'Licence Issued', 'Payment was confirmed under reference PAY-DELTA-20260121-004. Licence RO-54891 was issued for Free Zone Enterprise Licence.', CAST('2026-01-22T09:10:00' AS DATETIME2) UNION ALL
 
-    SELECT 'FZA-DEMO-003', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2025-11-20T10:05:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-003', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2025-11-20T10:05:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-003', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2025-11-24T14:15:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-003', 'ApprovedByAdmin', @admin_user_id, 'System Admin', 'Admin', 'Awaiting Admin Approval', 'Approved Pending Payment', 'Managing Director approved the application for Free Zone Enterprise - Special Activity Licence. The contractor must now submit payment details before the licence can be issued.', CAST('2025-11-26T10:20:00' AS DATETIME2) UNION ALL
-    SELECT 'FZA-DEMO-003', 'PaymentSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-BRASS-20251127-002 for admin confirmation.', CAST('2025-11-27T16:40:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-003', 'PaymentSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-BRASS-20251127-002 for admin confirmation.', CAST('2025-11-27T16:40:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-003', 'LicenseIssued', @admin_user_id, 'System Admin', 'Admin', 'Payment Submitted', 'Licence Issued', 'Payment was confirmed under reference PAY-BRASS-20251127-002. Licence RO-60321 was issued for Free Zone Enterprise - Special Activity Licence.', CAST('2025-11-28T11:00:00' AS DATETIME2) UNION ALL
 
-    SELECT 'FZA-DEMO-004', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2025-03-05T08:45:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-004', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2025-03-05T08:45:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-004', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2025-03-12T15:30:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-004', 'ApprovedByAdmin', @admin_user_id, 'System Admin', 'Admin', 'Awaiting Admin Approval', 'Approved Pending Payment', 'Managing Director approved the application for Free Zone Developer Licence. The contractor must now submit payment details before the licence can be issued.', CAST('2025-03-15T12:10:00' AS DATETIME2) UNION ALL
-    SELECT 'FZA-DEMO-004', 'PaymentSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-DEVELOPER-20250318-003 for admin confirmation.', CAST('2025-03-18T16:10:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-004', 'PaymentSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-DEVELOPER-20250318-003 for admin confirmation.', CAST('2025-03-18T16:10:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-004', 'LicenseIssued', @admin_user_id, 'System Admin', 'Admin', 'Payment Submitted', 'Licence Issued', 'Payment was confirmed under reference PAY-DEVELOPER-20250318-003. Licence RO-64512 was issued for Free Zone Developer Licence.', CAST('2025-03-20T09:05:00' AS DATETIME2) UNION ALL
 
     SELECT 'FZA-DEMO-005', 'Submitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2025-02-01T09:30:00' AS DATETIME2) UNION ALL
@@ -1095,10 +1095,10 @@ INNER JOIN (
     SELECT 'FZA-DEMO-006', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2026-03-08T12:20:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-006', 'ApprovedByAdmin', @admin_user_id, 'System Admin', 'Admin', 'Awaiting Admin Approval', 'Approved Pending Payment', 'Managing Director approved the application for Free Zone Enterprise Licence. The contractor must now submit payment details before the licence can be issued.', CAST('2026-03-10T09:00:00' AS DATETIME2) UNION ALL
 
-    SELECT 'FZA-DEMO-007', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-06T09:05:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-007', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-06T09:05:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-007', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2026-03-09T13:10:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-007', 'ApprovedByAdmin', @admin_user_id, 'System Admin', 'Admin', 'Awaiting Admin Approval', 'Approved Pending Payment', 'Managing Director approved the application for Free Zone Enterprise Licence. The contractor must now submit payment details before the licence can be issued.', CAST('2026-03-11T11:20:00' AS DATETIME2) UNION ALL
-    SELECT 'FZA-DEMO-007', 'PaymentSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-BESTAF-20260314-009 for admin confirmation.', CAST('2026-03-14T09:40:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-007', 'PaymentSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Approved Pending Payment', 'Payment Submitted', 'Contractor submitted payment reference PAY-BESTAF-20260314-009 for admin confirmation.', CAST('2026-03-14T09:40:00' AS DATETIME2) UNION ALL
 
     SELECT 'FZA-DEMO-008', 'Submitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-07T08:40:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-008', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2026-03-11T12:00:00' AS DATETIME2) UNION ALL
@@ -1106,7 +1106,7 @@ INNER JOIN (
     SELECT 'FZA-DEMO-009', 'Submitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-08T11:25:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-009', 'ReturnedForRevision', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Returned', 'Please clarify the exact subsea equipment list and attach the notarized incorporation copy.', CAST('2026-03-12T15:40:00' AS DATETIME2) UNION ALL
 
-    SELECT 'FZA-DEMO-010', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-09T09:00:00' AS DATETIME2) UNION ALL
+    SELECT 'FZA-DEMO-010', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-09T09:00:00' AS DATETIME2) UNION ALL
 
     SELECT 'FZA-DEMO-011', 'Submitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', NULL, 'Submitted', 'Company application submitted by contractor.', CAST('2026-03-10T08:20:00' AS DATETIME2) UNION ALL
     SELECT 'FZA-DEMO-011', 'ForwardedToAdmin', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Awaiting Admin Approval', 'Compliance review completed and the application was forwarded for final admin approval.', CAST('2026-03-12T10:15:00' AS DATETIME2) UNION ALL
@@ -1421,7 +1421,7 @@ INNER JOIN (
     SELECT 'Delta Fabrication & Logistics Ltd', 'Pressure Alarm', 'IncidentLogged', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'A high-pressure alarm was triggered during hydraulic gantry testing and the incident was logged for review.', CAST('2026-03-13T08:50:00' AS DATETIME2) UNION ALL
     SELECT 'Delta Fabrication & Logistics Ltd', 'Pressure Alarm', 'FollowUpSubmitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', 'Open', 'Open', 'The alarm occurred during a planned pressure test and the unit has since returned to safe operating parameters. Supporting calibration sheets have been uploaded.', CAST('2026-03-14T12:10:00' AS DATETIME2) UNION ALL
     SELECT 'Brass Offshore Calibration Ltd', 'Gas Leak Alert', 'IncidentLogged', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'A minor calibration gas leak alert was recorded inside the calibration lab during a routine verification cycle.', CAST('2026-03-09T14:35:00' AS DATETIME2) UNION ALL
-    SELECT 'Brass Offshore Calibration Ltd', 'Gas Leak Alert', 'FollowUpSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Open', 'Open', 'The leaking regulator was replaced, the area was ventilated, and fresh calibration gas cylinders were commissioned.', CAST('2026-03-10T09:15:00' AS DATETIME2) UNION ALL
+    SELECT 'Brass Offshore Calibration Ltd', 'Gas Leak Alert', 'FollowUpSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Open', 'Open', 'The leaking regulator was replaced, the area was ventilated, and fresh calibration gas cylinders were commissioned.', CAST('2026-03-10T09:15:00' AS DATETIME2) UNION ALL
     SELECT 'Brass Offshore Calibration Ltd', 'Gas Leak Alert', 'Resolved', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Open', 'Resolved', 'Contractor follow-up was accepted and the incident was resolved.', CAST('2026-03-11T11:40:00' AS DATETIME2) UNION ALL
     SELECT 'Eko Support Logistics Hub Ltd', 'Access Control Breach', 'IncidentLogged', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'An access control breach was reported when a non-cleared vendor vehicle entered the export staging dock area.', CAST('2026-03-07T07:55:00' AS DATETIME2) UNION ALL
     SELECT 'Eko Support Logistics Hub Ltd', 'Access Control Breach', 'FollowUpSubmitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', 'Open', 'Open', 'The incident was traced to a duplicate gate pass from a prior-day drill. No unauthorized cargo movement occurred.', CAST('2026-03-07T14:25:00' AS DATETIME2) UNION ALL
@@ -1604,14 +1604,14 @@ INNER JOIN (
     SELECT 'TOR-DEMO-001', 'Approved', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Approved', 'Compliance confirmed all inbound sea freight documents and approved the request.', CAST('2026-03-02T11:40:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-002', 'Submitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', NULL, 'Submitted', 'Processing/value addition request submitted for compliance review.', CAST('2026-03-03T10:10:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-002', 'Approved', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Approved', 'Compliance approved the processing/value addition request after reviewing the duty rebate documents.', CAST('2026-03-04T15:05:00' AS DATETIME2) UNION ALL
-    SELECT 'TOR-DEMO-003', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Road import request submitted for customs transfer processing.', CAST('2026-03-04T08:15:00' AS DATETIME2) UNION ALL
+    SELECT 'TOR-DEMO-003', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Road import request submitted for customs transfer processing.', CAST('2026-03-04T08:15:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-003', 'ReturnedForRevision', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Returned', 'Please attach the attested waybill endorsed by Customs and correct the tonnage declaration.', CAST('2026-03-05T13:20:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-004', 'Submitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', NULL, 'Submitted', 'Export by sea request submitted and awaiting compliance review.', CAST('2026-03-13T12:10:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-005', 'Submitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', NULL, 'Submitted', 'Transfer between licensees request submitted with customs approval.', CAST('2026-03-08T14:05:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-005', 'Approved', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Approved', 'Compliance approved the internal transfer between licensees.', CAST('2026-03-09T09:10:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-006', 'Submitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', NULL, 'Submitted', 'Examination and assessment request submitted for immediate-use release.', CAST('2026-03-08T10:30:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-006', 'Rejected', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Rejected', 'Duty payment receipt submitted does not reconcile with the declared shipment value.', CAST('2026-03-09T16:00:00' AS DATETIME2) UNION ALL
-    SELECT 'TOR-DEMO-007', 'Submitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', NULL, 'Submitted', 'Air freight request submitted with airway bill and commercial invoice.', CAST('2026-03-14T08:45:00' AS DATETIME2) UNION ALL
+    SELECT 'TOR-DEMO-007', 'Submitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', NULL, 'Submitted', 'Air freight request submitted with airway bill and commercial invoice.', CAST('2026-03-14T08:45:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-008', 'Submitted', @contractor_gamma_id, 'Taylor Briggs', 'Contractor', NULL, 'Submitted', 'Temporary movement request submitted under bond for repair and return.', CAST('2026-03-15T10:20:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-008', 'ReturnedForRevision', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Submitted', 'Returned', 'Please provide the signed free zone bond reference and clarify the proposed return date.', CAST('2026-03-15T15:10:00' AS DATETIME2) UNION ALL
     SELECT 'TOR-DEMO-009', 'Submitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', NULL, 'Submitted', 'Export by air request submitted for urgent fabricated spares.', CAST('2026-03-10T09:40:00' AS DATETIME2) UNION ALL
@@ -1674,7 +1674,29 @@ FROM (
     SELECT 'Niger Atlantic Developers Ltd', 'AuditFinding', 'Resolve Drainage Channel Housekeeping Finding', NULL, 'Low', 'Submit evidence that the development yard drainage channels were cleaned and re-marked after the audit inspection.', 'Resolved', CAST('2026-03-12' AS DATE), CAST('2026-03-05T10:00:00' AS DATETIME2), 'Drainage channels were cleaned, remarking was completed, and attached photos show the close-out condition.', 'niger_atlantic_drainage_closeout.zip', CAST('2026-03-09T15:15:00' AS DATETIME2), @contractor_beta_id, 'Corrective action accepted. The drainage finding is resolved.', NULL, NULL, CAST('2026-03-10T12:20:00' AS DATETIME2), @compliance_user_id, NULL, NULL, CAST('2026-03-10T12:20:00' AS DATETIME2) UNION ALL
     SELECT 'Eko Support Logistics Hub Ltd', 'DocumentUpdate', 'Remove Duplicate Document Refresh Request', 'Warehouse Layout', 'Low', 'A refreshed warehouse layout file was requested during periodic compliance review.', 'Closed', CAST('2026-03-06' AS DATE), CAST('2026-03-04T08:30:00' AS DATETIME2), NULL, NULL, NULL, NULL, 'The request was logged against a document already refreshed in the prior quarter and has been closed.', NULL, NULL, NULL, NULL, CAST('2026-03-05T11:10:00' AS DATETIME2), @compliance_user_id, CAST('2026-03-05T11:10:00' AS DATETIME2) UNION ALL
     SELECT 'Delta Fabrication & Logistics Ltd', 'AuditFinding', 'Address Hot Work Permit Register Gaps', NULL, 'High', 'Provide corrective action for the gaps identified in the fabrication bay hot-work permit register and supervisor sign-off controls.', 'Open', CAST('2026-03-08' AS DATE), CAST('2026-03-01T09:00:00' AS DATETIME2), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, CAST('2026-03-01T09:00:00' AS DATETIME2)
-) s
+) s (
+    company_name,
+    case_type,
+    title,
+    document_type,
+    severity,
+    request_note,
+    status,
+    due_date,
+    requested_at,
+    contractor_response_note,
+    contractor_response_file_name,
+    contractor_response_submitted_at,
+    contractor_response_submitted_by_user_id,
+    review_note,
+    returned_at,
+    returned_by_user_id,
+    resolved_at,
+    resolved_by_user_id,
+    closed_at,
+    closed_by_user_id,
+    updated_at
+)
 INNER JOIN dbo.companies c
     ON c.name = s.company_name;
 
@@ -1704,15 +1726,25 @@ INNER JOIN (
     SELECT 'Upload Updated Insurance Certificate', 'CaseCreated', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'Provide the updated all-risk insurance certificate for the fabrication bay and bonded yard.', CAST('2026-03-11T13:20:00' AS DATETIME2) UNION ALL
     SELECT 'Upload Updated Insurance Certificate', 'ContractorResponseSubmitted', @contractor_alpha_id, 'Morgan Reed', 'Contractor', 'Open', 'Response Submitted', 'Updated insurance certificate has been attached with the new policy endorsement for the fabrication bay and export yard.', CAST('2026-03-14T10:05:00' AS DATETIME2) UNION ALL
     SELECT 'Close Out Calibration Lab Ventilation Finding', 'CaseCreated', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'Respond to the audit finding on calibration gas ventilation controls and provide evidence of corrective action.', CAST('2026-03-08T09:40:00' AS DATETIME2) UNION ALL
-    SELECT 'Close Out Calibration Lab Ventilation Finding', 'ContractorResponseSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Open', 'Response Submitted', 'Ventilation fans were serviced and the gas cylinder rack was repositioned. Attached is the maintenance close-out note.', CAST('2026-03-11T10:35:00' AS DATETIME2) UNION ALL
+    SELECT 'Close Out Calibration Lab Ventilation Finding', 'ContractorResponseSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Open', 'Response Submitted', 'Ventilation fans were serviced and the gas cylinder rack was repositioned. Attached is the maintenance close-out note.', CAST('2026-03-11T10:35:00' AS DATETIME2) UNION ALL
     SELECT 'Close Out Calibration Lab Ventilation Finding', 'CaseReturned', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Response Submitted', 'Returned', 'The response is helpful, but the calibration lab layout sketch is still missing. Re-submit with the marked-up ventilation layout.', CAST('2026-03-12T16:10:00' AS DATETIME2) UNION ALL
     SELECT 'Resolve Drainage Channel Housekeeping Finding', 'CaseCreated', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'Submit evidence that the development yard drainage channels were cleaned and re-marked after the audit inspection.', CAST('2026-03-05T10:00:00' AS DATETIME2) UNION ALL
-    SELECT 'Resolve Drainage Channel Housekeeping Finding', 'ContractorResponseSubmitted', @contractor_beta_id, 'Daniel Audu', 'Contractor', 'Open', 'Response Submitted', 'Drainage channels were cleaned, remarking was completed, and attached photos show the close-out condition.', CAST('2026-03-09T15:15:00' AS DATETIME2) UNION ALL
+    SELECT 'Resolve Drainage Channel Housekeeping Finding', 'ContractorResponseSubmitted', @contractor_beta_id, 'Jordan Cole', 'Contractor', 'Open', 'Response Submitted', 'Drainage channels were cleaned, remarking was completed, and attached photos show the close-out condition.', CAST('2026-03-09T15:15:00' AS DATETIME2) UNION ALL
     SELECT 'Resolve Drainage Channel Housekeeping Finding', 'CaseResolved', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Response Submitted', 'Resolved', 'Corrective action accepted. The drainage finding is resolved.', CAST('2026-03-10T12:20:00' AS DATETIME2) UNION ALL
     SELECT 'Remove Duplicate Document Refresh Request', 'CaseCreated', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'A refreshed warehouse layout file was requested during periodic compliance review.', CAST('2026-03-04T08:30:00' AS DATETIME2) UNION ALL
     SELECT 'Remove Duplicate Document Refresh Request', 'CaseClosed', @compliance_user_id, 'Sarah Compliance', 'Compliance', 'Open', 'Closed', 'The request was logged against a document already refreshed in the prior quarter and has been closed.', CAST('2026-03-05T11:10:00' AS DATETIME2) UNION ALL
     SELECT 'Address Hot Work Permit Register Gaps', 'CaseCreated', @compliance_user_id, 'Sarah Compliance', 'Compliance', NULL, 'Open', 'Provide corrective action for the gaps identified in the fabrication bay hot-work permit register and supervisor sign-off controls.', CAST('2026-03-01T09:00:00' AS DATETIME2)
-) e
+) e (
+    title,
+    event_type,
+    actor_user_id,
+    actor_name,
+    actor_role,
+    from_status,
+    to_status,
+    note,
+    created_at
+)
     ON cc.title = e.title;
 
 COMMIT;
