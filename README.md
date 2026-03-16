@@ -2,6 +2,8 @@
 
 This contains everything you need to run your app locally.
 
+The project can be set up on macOS, Linux, or Windows. Where a command differs by platform, both variants are shown below.
+
 ## Prerequisites
 - **Git** — for cloning the repository and pulling updates
 - **Node.js** (recommended: version 18 or later)
@@ -11,11 +13,17 @@ This contains everything you need to run your app locally.
   
 ## Clone the repository
 
-```git clone https://github.com/danieldev10/petroflow-digital-automation.git```
+```bash
+git clone https://github.com/danieldev10/petroflow-digital-automation.git
+```
 
 ## Install Dependencies
-- ```cd petroflow-digital-automation/```
-- ```npm install```
+- ```bash
+  cd petroflow-digital-automation
+  ```
+- ```bash
+  npm install
+  ```
 
 ## Environment Variables
 
@@ -35,7 +43,9 @@ SMTP_PASS=your_smtp_password_here
 ## Running SQL server locally with Docker
 
 ### Create & Run the MSSQL Server
-```
+
+#### macOS / Linux
+```bash
 docker run --platform linux/amd64 -e 'ACCEPT_EULA=Y' \
   -e 'MSSQL_SA_PASSWORD=your_password_here' \
   -p 1433:1433 \
@@ -44,17 +54,38 @@ docker run --platform linux/amd64 -e 'ACCEPT_EULA=Y' \
   mcr.microsoft.com/mssql/server:2022-latest
 ```
 
+#### Windows PowerShell
+```powershell
+docker run --platform linux/amd64 `
+  -e "ACCEPT_EULA=Y" `
+  -e "MSSQL_SA_PASSWORD=your_password_here" `
+  -p 1433:1433 `
+  --name ms-sql-server `
+  -d `
+  mcr.microsoft.com/mssql/server:2022-latest
+```
+
 ### Create the database
-```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -Q "CREATE DATABASE PetroflowDB;"```
+```bash
+sqlcmd -S localhost,1433 -U sa -P "your_password_here" -Q "CREATE DATABASE PetroflowDB;"
+```
 
 ### Apply the schema
-```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i schema.sql```
+```bash
+sqlcmd -S localhost,1433 -U sa -P "your_password_here" -d PetroflowDB -i schema.sql
+```
 
 ### Seed demo users
-```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i migrations/demo_users.sql```
+```bash
+sqlcmd -S localhost,1433 -U sa -P "your_password_here" -d PetroflowDB -i migrations/demo_users.sql
+```
 
 ### Seed the dummy data
-```sqlcmd -S localhost,1433 -U sa -P 'your_password_here' -d PetroflowDB -i migrations/dummy_data.sql```
+```bash
+sqlcmd -S localhost,1433 -U sa -P "your_password_here" -d PetroflowDB -i migrations/dummy_data.sql
+```
+
+If `sqlcmd` complains about certificate trust on your machine, re-run the same commands with `-C` added right after `sqlcmd`.
 
 ## Demo Logins
 - Admin: `admin@petroflow.com` / `admin123`
@@ -66,6 +97,8 @@ docker run --platform linux/amd64 -e 'ACCEPT_EULA=Y' \
 - Contractor: `contractor.gamma@ogfza.example.com` / `demo123`
 
 ## Run the App
-```npm run dev```
+```bash
+npm run dev
+```
 
 Open `http://localhost:3001` in your browser.
