@@ -1,3 +1,4 @@
+// centralized authenticated app data fetching and state for the dashboard.
 import { useCallback, useState } from 'react';
 import { Stats } from 'motion/react';
 import {

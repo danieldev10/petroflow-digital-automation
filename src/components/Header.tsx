@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Bell, Clock, Menu, Search, X } from 'lucide-react';
+import { Bell, Menu, Search, X } from 'lucide-react';
 import { User } from '@/middleware/types.middleware';
 import { AppTab } from './SideBar';
 import type { ActionCenterItem } from '@/src/utils/actionCenter';
 import type { LiveNotification } from '@/src/hooks/useNotifications';
 import type { GlobalSearchResult, ModuleSearchTarget } from '@/src/utils/globalSearch';
-import OgfzaLogo from '@/src/components/OgfzaLogo';
 
 type HeaderProps = {
     user: User;
@@ -104,7 +103,7 @@ export function Header({
                     </h2>
                 </div>
 
-                <div className="hidden sm:block h-4 w-[1px] bg-brand-line/20" />
+                <div className="hidden sm:block h-4 w-px bg-brand-line/20" />
 
 
             </div>
@@ -138,7 +137,7 @@ export function Header({
                             }
                         }}
                         placeholder="Search companies, requests, incidents, assets..."
-                        className="w-full border border-brand-line/15 bg-brand-ink/[0.03] pl-10 pr-10 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-ink"
+                        className="w-full border border-brand-line/15 bg-brand-ink/3 pl-10 pr-10 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-ink"
                     />
                     {trimmedQuery.length > 0 && (
                         <button
@@ -165,7 +164,7 @@ export function Header({
                                     No matching records were found in the accessible modules.
                                 </div>
                             ) : (
-                                <div className="max-h-[24rem] overflow-y-auto py-2">
+                                <div className="max-h-96 overflow-y-auto py-2">
                                     {visibleResults.map((result) => (
                                         <button
                                             key={result.id}
@@ -174,7 +173,7 @@ export function Header({
                                                 onSelectGlobalSearchResult(result);
                                                 setSearchOpen(false);
                                             }}
-                                            className="w-full px-4 py-3 text-left hover:bg-brand-ink/[0.03] transition-colors"
+                                            className="w-full px-4 py-3 text-left hover:bg-brand-ink/3 transition-colors"
                                         >
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="min-w-0">
@@ -260,7 +259,7 @@ export function Header({
                                     </div>
 
                                     {visibleActionItems.length === 0 ? (
-                                        <div className="border border-dashed border-brand-line/15 bg-brand-ink/[0.02] px-4 py-5 text-sm opacity-55">
+                                        <div className="border border-dashed border-brand-line/15 bg-brand-ink/2 px-4 py-5 text-sm opacity-55">
                                             No outstanding action items for your role right now.
                                         </div>
                                     ) : (
@@ -277,7 +276,7 @@ export function Header({
                                                         });
                                                         setActionCenterOpen(false);
                                                     }}
-                                                    className="w-full border border-brand-line/10 px-4 py-4 text-left hover:bg-brand-ink/[0.02]"
+                                                    className="w-full border border-brand-line/10 px-4 py-4 text-left hover:bg-brand-ink/2"
                                                 >
                                                     <div className="flex items-start justify-between gap-3">
                                                         <div className="min-w-0">
@@ -304,7 +303,7 @@ export function Header({
                                     </p>
 
                                     {visibleLiveNotifications.length === 0 ? (
-                                        <div className="border border-dashed border-brand-line/15 bg-brand-ink/[0.02] px-4 py-5 text-sm opacity-55">
+                                        <div className="border border-dashed border-brand-line/15 bg-brand-ink/2 px-4 py-5 text-sm opacity-55">
                                             No live workflow alerts have been received in this session yet.
                                         </div>
                                     ) : (

@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import { Request } from "express";
 import "dotenv/config";
 
 export interface JwtUser {

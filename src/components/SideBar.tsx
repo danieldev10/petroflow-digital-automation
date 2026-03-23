@@ -126,8 +126,8 @@ export function Sidebar({
                             {user.fullName.charAt(0)}
                         </div>
                         <div>
-                            <p className="text-xs font-bold truncate max-w-[150px]">{user.fullName}</p>
-                            <p className="text-[10px] opacity-50 truncate max-w-[150px]">{user.role}</p>
+                            <p className="text-xs font-bold truncate max-w-37.5">{user.fullName}</p>
+                            <p className="text-[10px] opacity-50 truncate max-w-37.5">{user.role}</p>
                         </div>
                     </div>
 

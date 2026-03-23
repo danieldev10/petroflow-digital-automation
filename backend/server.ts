@@ -1,23 +1,8 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
-import sql from "mssql";
 import "dotenv/config";
-import { AuthenticatedRequest } from "../middleware/types.middleware";
-import type { JwtUser } from "../middleware/types.middleware";
-import {
-  clients,
-  createRequest,
-  today,
-  hasRole,
-  sendPushNotification,
-  isUniqueConstraintError,
-} from "./helpers";
 import { poolConnect } from "@/db";
-import { transporter } from "./email";
 import authRoutes from "./routes/auth.routes";
 import dashboardRoutes from "./routes/dashboard.routes";
 import notificationRoutes from "./routes/notification.routes";
@@ -31,7 +16,6 @@ import incidentsRoutes from "./routes/incidents.routes";
 import assetsRoutes from "./routes/assets.routes";
 import userRoutes from "./routes/users.routes";
 import maintenanceRoutes from "./routes/maintenance.routes";
-import { authenticateToken } from "../middleware/auth.middleware";
 
 const JWT_SECRET = process.env.JWT_SECRET || "petroflow-secret-key-2024";
 const PORT = Number(process.env.PORT || 3001);
@@ -60,7 +44,6 @@ async function startServer() {
     res.status(404).json({ error: "API route not found." });
   });
 
-  // ---------- VITE / STATIC ----------
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
